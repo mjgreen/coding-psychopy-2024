@@ -21,7 +21,7 @@ For anything beyond basic stimulus response, we have to go beyond the basic Buil
 
 For psychologists who know a little python, this can result in a fairly complex experiment that runs in a lab. To meet the need to run complex experiments online, without requiring users to learn javascript, there is an ongoing "auto-translation" effort that works one-way `python -> javascript`. 
 
-This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation featrure is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.
+This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation feature is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.
 
 
 ## Python
