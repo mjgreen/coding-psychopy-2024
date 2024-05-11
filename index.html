@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,10 +38,21 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#complex-randomisation" id="toc-complex-randomisation" class="nav-link" data-scroll-target="#complex-randomisation">Complex randomisation</a></li>
+  <li><a href="#flow-control-if" id="toc-flow-control-if" class="nav-link" data-scroll-target="#flow-control-if">Flow control (if…)</a></li>
+  <li><a href="#previous-responses" id="toc-previous-responses" class="nav-link" data-scroll-target="#previous-responses">Previous responses</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -71,27 +82,30 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
 
-
-<section id="the-builder" class="level2">
-<h2 class="anchored" data-anchor-id="the-builder">The Builder</h2>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p><strong><em>The Builder, python, and javascript</em></strong></p>
 <p>PsychoPy has a Builder interface that allows you to specify an experiment using a visual icon-based interface. It is still possible to write raw python code that calls the psychopy libraries - this is how psychopy started life, as a set of routines that simplified doing repetitive tasks in python like creating shapes and drawing them to the screen.</p>
 <p>The Builder takes your visual representation of the experiment and translates it into those low-level python routines.</p>
 <p>In response to Covid and the associated requirement to deploy experiments that can be carried out online via web browsers, the Builder can now generate javascript equivalents of those low-level python routines. Using javascript for this is not a choice - we are constrained to use javascript because that is the language of the web browser.</p>
 <p>So the Builder is the starting point and python and javascript are the two output options.</p>
 <p>For anything beyond basic stimulus response, we have to go beyond the basic Builder icons for things like “image” and write raw python which we inject using the “Code” icon.</p>
 <p>For psychologists who know a little python, this can result in a fairly complex experiment that runs in a lab. To meet the need to run complex experiments online, without requiring users to learn javascript, there is an ongoing “auto-translation” effort that works one-way <code>python -&gt; javascript</code>.</p>
-<p>This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation featrure is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.</p>
+<p>This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation feature is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.</p>
 </section>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">Python</h2>
-<p>For lab studies</p>
+<section id="complex-randomisation" class="level2">
+<h2 class="anchored" data-anchor-id="complex-randomisation">Complex randomisation</h2>
+<p>Simple randomisation is handled by shuffling the spreadsheet that controls a loop. This works for presenting pre-defined trial contents in a different order for each participant.</p>
 </section>
-<section id="javascript" class="level2">
-<h2 class="anchored" data-anchor-id="javascript">Javascript</h2>
-<p>For online studies</p>
+<section id="flow-control-if" class="level2">
+<h2 class="anchored" data-anchor-id="flow-control-if">Flow control (if…)</h2>
+<p>Any time you want to say “if …”, the name of the programming feature you want is <em>flow control</em>.</p>
+</section>
+<section id="previous-responses" class="level2">
+<h2 class="anchored" data-anchor-id="previous-responses">Previous responses</h2>
+<p>Previous responses can be accessed in PsychoPy – you just need to know the conventions used for naming the various parts of the experiment. For example if you have a keyboard component called <em>response</em> and the participant responded by pressing the key “a”, then you can access the “a” by using the name <code>response.resp</code>. In programming the term <strong>key-value pair</strong> is used for this relationship – we refer to <code>response.resp</code> as the <strong>key</strong> and we refer to “a” as the <strong>value</strong>.</p>
 </section>
 
 </main>
@@ -175,9 +189,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -187,17 +202,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -210,125 +216,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -372,7 +259,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -398,32 +284,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -484,7 +344,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

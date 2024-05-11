@@ -5,9 +5,12 @@ format: html
 editor: source
 date: today
 date-format: DD MMMM, YYYY
+toc: true
 ---
 
-## The Builder
+## Intro
+
+***The Builder, python, and javascript***
 
 PsychoPy has a Builder interface that allows you to specify an experiment using a visual icon-based interface. It is still possible to write raw python code that calls the psychopy libraries - this is how psychopy started life, as a set of routines that simplified doing repetitive tasks in python like creating shapes and drawing them to the screen.
 
@@ -23,11 +26,16 @@ For psychologists who know a little python, this can result in a fairly complex 
 
 This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation feature is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.
 
+## Complex randomisation
 
-## Python
+Simple randomisation is handled by shuffling the spreadsheet that controls a loop. This works for presenting pre-defined trial contents in a different order for each participant.
 
-For lab studies
+## Flow control (if...)
 
-## Javascript
+Any time you want to say "if ...", the name of the programming feature you want is *flow control*.
 
-For online studies
+## Previous responses
+
+Previous responses can be accessed in PsychoPy -- you just need to know the conventions used for naming the various parts of the experiment. For example if you have a keyboard component called *response* and the participant responded by pressing the key "a", then you can access the "a" by using the name `response.resp`. In programming the term **key-value pair** is used for this relationship -- we refer to `response.resp` as the **key** and we refer to "a" as the **value**.
+
+
