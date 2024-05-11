@@ -10,6 +10,10 @@ toc: true
 
 ## About
 
+This material lives at a repository on github: [https://github.com/mjgreen/coding-psychopy-2024](https://github.com/mjgreen/coding-psychopy-2024).
+
+The webpage for the long-form content is [https://mjgreen.github.io/coding-psychopy-2024/](https://mjgreen.github.io/coding-psychopy-2024/){target="_blank"}
+
 For slides see [https://mjgreen.github.io/coding-psychopy-2024/slides.html](https://mjgreen.github.io/coding-psychopy-2024/slides.html){target="_blank"}
 
 ## Intro
