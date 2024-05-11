@@ -1,9 +1,7 @@
 # coding-psychopy-2024
 How to write code components in PsychoPy
 
+# links
+The long-form content is at [https://mjgreen.github.io/coding-psychopy-2024/](https://mjgreen.github.io/coding-psychopy-2024/).
 
-This material lives at a [repository on github](https://github.com/mjgreen/coding-psychopy-2024){target="_blank"}.
-
-This long-form content is at [this link](https://mjgreen.github.io/coding-psychopy-2024/){target="_blank"}.
-
-There are slides at [this link](https://mjgreen.github.io/coding-psychopy-2024/slides.html){target="_blank"}.
+There are slides at [https://mjgreen.github.io/coding-psychopy-2024/slides.html](https://mjgreen.github.io/coding-psychopy-2024/slides.html).
