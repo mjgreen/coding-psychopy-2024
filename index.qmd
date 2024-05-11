@@ -8,6 +8,10 @@ date-format: DD MMMM, YYYY
 toc: true
 ---
 
+## About
+
+For slides see [https://mjgreen.github.io/coding-psychopy-2024/slides.html](https://mjgreen.github.io/coding-psychopy-2024/slides.html)
+
 ## Intro
 
 ***The Builder, python, and javascript***
