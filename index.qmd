@@ -3,8 +3,8 @@ title: "How to write Code components in PsychoPy"
 author: "Matt Green"
 format: html
 editor: source
-date: today
-date-format: DD MMMM, YYYY
+date: now
+date-format: DD MMMM, YYYY, HH:mm:ss
 toc: true
 ---
 
