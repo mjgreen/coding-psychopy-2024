@@ -1,0 +1,33 @@
+---
+title: "How to write Code components in PsychoPy"
+author: "Matt Green"
+format: html
+editor: source
+date: today
+date-format: DD MMMM, YYYY
+---
+
+## The Builder
+
+PsychoPy has a Builder interface that allows you to specify an experiment using a visual icon-based interface. It is still possible to write raw python code that calls the psychopy libraries - this is how psychopy started life, as a set of routines that simplified doing repetitive tasks in python like creating shapes and drawing them to the screen.
+
+The Builder takes your visual representation of the experiment and translates it into those low-level python routines.
+
+In response to Covid and the associated requirement to deploy experiments that can be carried out online via web browsers, the Builder can now generate javascript equivalents of those low-level python routines. Using javascript for this is not a choice - we are constrained to use javascript because that is the language of the web browser. 
+
+So the Builder is the starting point and python and javascript are the two output options.
+
+For anything beyond basic stimulus response, we have to go beyond the basic Builder icons for things like "image" and write raw python which we inject using the "Code" icon.
+
+For psychologists who know a little python, this can result in a fairly complex experiment that runs in a lab. To meet the need to run complex experiments online, without requiring users to learn javascript, there is an ongoing "auto-translation" effort that works one-way `python -> javascript`. 
+
+This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation featrure is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.
+
+
+## Python
+
+For lab studies
+
+## Javascript
+
+For online studies
