@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,13 +48,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
   <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a></li>
-  <li><a href="#complex-randomisation" id="toc-complex-randomisation" class="nav-link" data-scroll-target="#complex-randomisation">Complex randomisation</a></li>
-  <li><a href="#flow-control-if" id="toc-flow-control-if" class="nav-link" data-scroll-target="#flow-control-if">Flow control (if…)</a></li>
+  <li><a href="#randomisation" id="toc-randomisation" class="nav-link" data-scroll-target="#randomisation">Randomisation</a></li>
+  <li><a href="#flow-control" id="toc-flow-control" class="nav-link" data-scroll-target="#flow-control">Flow control</a></li>
   <li><a href="#previous-responses" id="toc-previous-responses" class="nav-link" data-scroll-target="#previous-responses">Previous responses</a></li>
-  <li><a href="#scratch" id="toc-scratch" class="nav-link" data-scroll-target="#scratch">SCRATCH</a>
-  <ul class="collapse">
-  <li><a href="#callout-blocks" id="toc-callout-blocks" class="nav-link" data-scroll-target="#callout-blocks">Callout blocks</a></li>
-  </ul></li>
+  
   </ul>
 </nav>
 </div>
@@ -79,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 May, 2024, 00:20:17</p>
+      <p class="date">13 May, 2024, 10:53:01</p>
     </div>
   </div>
   
@@ -108,23 +105,36 @@ ul.task-list li input[type="checkbox"] {
 <p>For psychologists who know a little python, this can result in a fairly complex experiment that runs in a lab. To meet the need to run complex experiments online, without requiring users to learn javascript, there is an ongoing “auto-translation” effort that works one-way <code>python -&gt; javascript</code>.</p>
 <p>This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation feature is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.</p>
 </section>
-<section id="complex-randomisation" class="level2">
-<h2 class="anchored" data-anchor-id="complex-randomisation">Complex randomisation</h2>
+<section id="randomisation" class="level2">
+<h2 class="anchored" data-anchor-id="randomisation">Randomisation</h2>
 <p>Simple randomisation is handled by shuffling the spreadsheet that controls a loop. This works for presenting pre-defined trial contents in a different order for each participant.</p>
 <p>An example of a situation where randomising in code would be useful is …</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Randomisation Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Insert Tara’s face-grid experiment</p>
+</div>
+</div>
 </section>
-<section id="flow-control-if" class="level2">
-<h2 class="anchored" data-anchor-id="flow-control-if">Flow control (if…)</h2>
+<section id="flow-control" class="level2">
+<h2 class="anchored" data-anchor-id="flow-control">Flow control</h2>
 <p>Any time you want to say <strong>if… then… else</strong>, the name of the programming feature you want is <strong>flow control</strong>.</p>
 </section>
 <section id="previous-responses" class="level2">
 <h2 class="anchored" data-anchor-id="previous-responses">Previous responses</h2>
 <p>Previous responses can be accessed in PsychoPy – you just need to know the conventions used for naming the various parts of the experiment. For example if you have a keyboard component called <em>response</em> and the participant responded by pressing the key “a”, then you can access the “a” by using the name <code>response.resp</code>. In programming the term <strong>key-value pair</strong> is used for this relationship – we refer to <code>response.resp</code> as the <strong>key</strong> and we refer to “a” as the <strong>value</strong>.</p>
 </section>
-<section id="scratch" class="level2">
-<h2 class="anchored" data-anchor-id="scratch">SCRATCH</h2>
-<section id="callout-blocks" class="level3">
-<h3 class="anchored" data-anchor-id="callout-blocks">Callout blocks</h3>
+
+
+<div id="quarto-appendix" class="default"><section id="callout-blocks" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Callout blocks</h2><div class="quarto-appendix-contents">
+
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -138,10 +148,7 @@ Note
 <p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
 </div>
 </div>
-</section>
-</section>
-
-</main>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -222,24 +229,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -274,11 +263,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
