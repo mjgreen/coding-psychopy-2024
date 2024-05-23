@@ -17,6 +17,10 @@ This long-form content is at [this link](https://mjgreen.github.io/coding-psycho
 
 There are slides at [this link](https://mjgreen.github.io/coding-psychopy-2024/slides.html){target="_blank"}.
 
+## Check out
+
+[Getting started with Code Components in PsychoPy (by making a visual search task!](https://youtu.be/0dJgLf7BxbE)
+
 ## Intro
 
 ***The Builder, python, and javascript***
