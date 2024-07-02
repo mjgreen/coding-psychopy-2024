@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -53,6 +53,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#flow-control" id="toc-flow-control" class="nav-link" data-scroll-target="#flow-control">Flow control</a></li>
   <li><a href="#previous-responses" id="toc-previous-responses" class="nav-link" data-scroll-target="#previous-responses">Previous responses</a></li>
   
+  <li><a href="#wacom-example" id="toc-wacom-example" class="nav-link" data-scroll-target="#wacom-example">Wacom example</a></li>
+  <li><a href="#tms-example" id="toc-tms-example" class="nav-link" data-scroll-target="#tms-example">TMS example</a></li>
+  <li><a href="#eeg-example" id="toc-eeg-example" class="nav-link" data-scroll-target="#eeg-example">EEG example</a></li>
+  <li><a href="#eye-tracking-example" id="toc-eye-tracking-example" class="nav-link" data-scroll-target="#eye-tracking-example">Eye-tracking example</a></li>
   </ul>
 </nav>
 </div>
@@ -77,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 May, 2024, 10:03:05</p>
+      <p class="date">02 July, 2024, 09:18:59</p>
     </div>
   </div>
   
@@ -137,6 +141,18 @@ Randomisation Example
 <p>Previous responses can be accessed in PsychoPy – you just need to know the conventions used for naming the various parts of the experiment. For example if you have a keyboard component called <em>response</em> and the participant responded by pressing the key “a”, then you can access the “a” by using the name <code>response.resp</code>. In programming the term <strong>key-value pair</strong> is used for this relationship – we refer to <code>response.resp</code> as the <strong>key</strong> and we refer to “a” as the <strong>value</strong>.</p>
 </section>
 
+<section id="wacom-example" class="level2">
+<h2 class="anchored" data-anchor-id="wacom-example">Wacom example</h2>
+</section>
+<section id="tms-example" class="level2">
+<h2 class="anchored" data-anchor-id="tms-example">TMS example</h2>
+</section>
+<section id="eeg-example" class="level2">
+<h2 class="anchored" data-anchor-id="eeg-example">EEG example</h2>
+</section>
+<section id="eye-tracking-example" class="level2">
+<h2 class="anchored" data-anchor-id="eye-tracking-example">Eye-tracking example</h2>
+</section>
 
 <div id="quarto-appendix" class="default"><section id="callout-blocks" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Callout blocks</h2><div class="quarto-appendix-contents">
 
@@ -234,6 +250,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -268,7 +302,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

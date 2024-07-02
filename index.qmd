@@ -64,3 +64,12 @@ Previous responses can be accessed in PsychoPy -- you just need to know the conv
 Note that there are five types of callouts, including:
 `note`, `warning`, `important`, `tip`, and `caution`.
 :::
+
+## Wacom example
+
+## TMS example
+
+## EEG example
+
+## Eye-tracking example
+
