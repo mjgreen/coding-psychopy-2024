@@ -21,6 +21,8 @@ There are slides at [this link](https://mjgreen.github.io/coding-psychopy-2024/s
 
 [Getting started with Code Components in PsychoPy (by making a visual search task!](https://youtu.be/0dJgLf7BxbE)
 
+## I am using PsychoPy 2024.1.5 but the AppsAnywhere version is `PsychoPy3 2024.1.4`
+
 ## Intro
 
 ***The Builder, python, and javascript***

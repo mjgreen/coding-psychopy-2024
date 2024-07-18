@@ -1,0 +1,3 @@
+execute:
+  python: "C:/Program Files/PsychoPy/python.exe"
+  echo: true

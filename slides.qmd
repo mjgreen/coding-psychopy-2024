@@ -1,26 +1,217 @@
 ---
 title: "Code components"
 author: "Matt"
-format: revealjs
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all
+    scrollable: false
+    preview-link: auto
+    fig-width: 7
+    fig-height: 4
+    toc: true
+    toc-depth: 1
+    number-sections: false
+    chalkboard: true
+    page-layout: full
+    # height: 1080
+    # width: 1920
 ---
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+# Variables
 
-## Bullets
+## Fields can be constants or variables.
 
-When you click the **Render** button a document will be generated that includes:
+To present an image you can supply the image's filename directly in the `Image` field ('constant' method).
 
--   Content authored with markdown
--   Output from executable code
+::: {.callout-tip title="method 1 using a constant"}
+![](demos/variables/Screenshot 2024-07-18 135559.png){width="100%"}
+:::
 
-## Code
+## {#slide3-id data-menu-title="foo"}
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+To present the same image you can supply the image's filename in a spreadsheet and use the column header as a variable ('variable' method)
 
-```{r}
-1 + 1
+::: {.callout-tip title="method 2 using a reference to the spreadsheet"}
+![](demos/variables/Screenshot 2024-07-18 135839.png){width="100%"}
+![](demos/variables/Screenshot 2024-07-18 133914.png){width="25%"}
+:::
+
+---
+
+* The 'variable' method allows you to present a sequence of images by passing a list of their names through the `Image` component in a loop.
+
+* Variable names are usually column headers in the spreadsheet that controls the loop, as in the previous example.
+
+* Variable names can also be things that you declare in code (next section)
+
+# Declaring in code
+
+---
+
+## Handle the cats in code
+
+```{python}
+# Make a list called `cats` containing the filenames.
+cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+
+# Set the index `i` to 0 (python starts counting from zero not one)
+i = 0
+
+# Make a variable called `this_cat` and point it at the i'th cat
+this_cat = cats[i]
+
+# increment the index so that the next trial gets the next cat in the list
+i = i + 1
+```
+
+Now we can use `this_cat` to reference the current trial's image of a cat.
+
+
+## Which tab to put the code in
+
+Use "Begin Experiment" tab to set up the list and set the index to zero
+
+![](demos/variables/Screenshot 2024-07-18 150858.png)
+
+## Which tab to put the code in
+
+Use "Begin Routine" tab to pull out the current cat as `this_cat`
+
+![](demos/variables/Screenshot 2024-07-18 152534.png)
+
+## Which tab to put the code in
+
+Use "End Routine" to increment the index ready to pull out the next cat.
+
+![](demos/variables/Screenshot 2024-07-18 152546.png)
+
+## Use `this_cat` as the Image
+
+![](demos/variables/Screenshot 2024-07-18 153728.png)
+
+Note that we have to change from "constant" to "set every repeat"
+
+## Advanced note
+
+We can also bypass the Image component altogether.
+
+```{python}
+#| eval: false
+
+from psychopy import visual
+my_image = visual.ImageStim(win=myWin)
+my_image.Image = cats[i]
 ```
 
 
+## Why declare in code?
+
+* It doesn't always repay the effort to declare variables in code.
+* In the last example the best way to present the cats in a sequence is the spreadsheet method.
+
+:::{.callout-important title="to do"}
+Justify declaring in code?
+:::
+
+# Randomising
+
+n.b. a truly randomised sequence can be in the same order as the original sequence. Most often we want pseudo-randomised sequences that impose some constraints on true randomisation.
+
+---
+
+Let's say we want to randomise the order in which cats are presented across participants to avoid systematic order effects.
+
+---
+
+If we are using the spreadsheet method, randomisation is a property of the loop: 
+
+* we can tell the loop to randomise the sequence of cats, 
+* but we can't tell the loop to __pseudo__-randomise the sequence of cats.
+
+---
+
+![](demos/variables/Screenshot 2024-07-18 160058.png)
+
+---
+
+If we are using code we can use `shuffle` on the list to get randomisation (not yet pseudo-randomisation but see later for that)
+
+```{python}
+import random
+
+# Make a list called `cats` containing the filenames.
+cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+
+# Shuffle the list
+random.shuffle(cats)
+print(cats)
+```
+
+## pseudo-randomising {.scrollable}
+
+One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.
+
+For example, let's say we never want the original order to be the outcome of shuffling the list.
+
+```{python}
+original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+```
+
+* Make a faithful copy of the original list. At this point `current_cats` is the same as the `original_cats` list.
+ 
+```{python}
+current_cats = original_cats.copy()
+```
+
+* Next we say: __while the `current_cats` list is still the same as the original, shuffle the `current_cats` list__
+
+```{python}
+while current_cats == original_cats:
+  random.shuffle(current_cats)
+```
+
+* Then verify that the resulting list is different from the original list
+
+```{python}
+shuffled_cats = current_cats.copy()
+print(shuffled_cats)
+```
+
+
+<!-- ```{python} -->
+<!-- #| eval: true -->
+<!-- import random -->
+
+<!-- # Make a list called `cats` containing the filenames. -->
+<!-- original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'] -->
+
+<!-- # Make copies of the original_cats list, not shuffled yet -->
+<!-- shuffled_cats = original_cats.copy() -->
+
+<!-- # Say that we are on the first attempt -->
+<!-- attempt = 0 -->
+<!-- # so, next, we say: -->
+<!-- # While both copies are the same, keep shuffling -->
+<!-- while True: -->
+<!--   if attempt == 0: -->
+<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
+<!--   while shuffled_cats == original_cats: -->
+<!--     attempt = attempt + 1 -->
+<!--     random.shuffle(shuffled_cats) -->
+<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
+<!--   break -->
+<!-- ``` -->
+
+---
+
+and we can do things more advanced than simple shuffling
+
+# Logic / Flow Control
+
+# Hardware
+
+::: {.notes}
+Speaker notes go here.
+:::

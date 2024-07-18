@@ -8,7 +8,7 @@
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Matt">
   <title>Code components</title>
@@ -29,11 +29,78 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -336,27 +403,255 @@ Matt
 </div>
 </div>
 
-</section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Table of contents</h2>
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li><a href="#/variables" id="/toc-variables">Variables</a></li>
+<li><a href="#/declaring-in-code" id="/toc-declaring-in-code">Declaring in code</a></li>
+<li><a href="#/randomising" id="/toc-randomising">Randomising</a></li>
+<li><a href="#/logic-flow-control" id="/toc-logic-flow-control">Logic / Flow Control</a></li>
+<li><a href="#/hardware" id="/toc-hardware">Hardware</a></li>
+</ul>
+</nav>
+</section>
+<section>
+<section id="variables" class="title-slide slide level1 center">
+<h1>Variables</h1>
+
+</section>
+<section id="fields-can-be-constants-or-variables." class="slide level2">
+<h2>Fields can be constants or variables.</h2>
+<p>To present an image you can supply the image’s filename directly in the <code>Image</code> field (‘constant’ method).</p>
+<div title="method 1 using a constant">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>method 1 using a constant</strong></p>
+</div>
+<div class="callout-content">
+<p><img data-src="demos/variables/Screenshot%202024-07-18%20135559.png" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="slide3-id" class="slide level2" data-menu-title="foo">
+<h2></h2>
+<p>To present the same image you can supply the image’s filename in a spreadsheet and use the column header as a variable (‘variable’ method)</p>
+<div title="method 2 using a reference to the spreadsheet">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>method 2 using a reference to the spreadsheet</strong></p>
+</div>
+<div class="callout-content">
+<p><img data-src="demos/variables/Screenshot%202024-07-18%20135839.png" style="width:100.0%"> <img data-src="demos/variables/Screenshot%202024-07-18%20133914.png" style="width:25.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>The ‘variable’ method allows you to present a sequence of images by passing a list of their names through the <code>Image</code> component in a loop.</p></li>
+<li><p>Variable names are usually column headers in the spreadsheet that controls the loop, as in the previous example.</p></li>
+<li><p>Variable names can also be things that you declare in code (next section)</p></li>
+</ul>
+</section></section>
+<section>
+<section id="declaring-in-code" class="title-slide slide level1 center">
+<h1>Declaring in code</h1>
+
+</section>
+<section id="handle-the-cats-in-code" class="slide level2">
+<h2>Handle the cats in code</h2>
+<div id="6addad29" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
+<span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Set the index `i` to 0 (python starts counting from zero not one)</span></span>
+<span id="cb1-5"><a href=""></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># Make a variable called `this_cat` and point it at the i'th cat</span></span>
+<span id="cb1-8"><a href=""></a>this_cat <span class="op">=</span> cats[i]</span>
+<span id="cb1-9"><a href=""></a></span>
+<span id="cb1-10"><a href=""></a><span class="co"># increment the index so that the next trial gets the next cat in the list</span></span>
+<span id="cb1-11"><a href=""></a>i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use <code>this_cat</code> to reference the current trial’s image of a cat.</p>
+</section>
+<section id="which-tab-to-put-the-code-in" class="slide level2">
+<h2>Which tab to put the code in</h2>
+<p>Use “Begin Experiment” tab to set up the list and set the index to zero</p>
+
+<img data-src="demos/variables/Screenshot%202024-07-18%20150858.png" class="r-stretch"></section>
+<section id="which-tab-to-put-the-code-in-1" class="slide level2">
+<h2>Which tab to put the code in</h2>
+<p>Use “Begin Routine” tab to pull out the current cat as <code>this_cat</code></p>
+
+<img data-src="demos/variables/Screenshot%202024-07-18%20152534.png" class="r-stretch"></section>
+<section id="which-tab-to-put-the-code-in-2" class="slide level2">
+<h2>Which tab to put the code in</h2>
+<p>Use “End Routine” to increment the index ready to pull out the next cat.</p>
+
+<img data-src="demos/variables/Screenshot%202024-07-18%20152546.png" class="r-stretch"></section>
+<section id="use-this_cat-as-the-image" class="slide level2">
+<h2>Use <code>this_cat</code> as the Image</h2>
+
+<img data-src="demos/variables/Screenshot%202024-07-18%20153728.png" class="r-stretch"><p>Note that we have to change from “constant” to “set every repeat”</p>
+</section>
+<section id="advanced-note" class="slide level2">
+<h2>Advanced note</h2>
+<p>We can also bypass the Image component altogether.</p>
+<div id="e413cb18" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
+<span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
+<span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="why-declare-in-code" class="slide level2">
+<h2>Why declare in code?</h2>
+<ul>
+<li>It doesn’t always repay the effort to declare variables in code.</li>
+<li>In the last example the best way to present the cats in a sequence is the spreadsheet method.</li>
+</ul>
+<div title="to do">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>to do</strong></p>
+</div>
+<div class="callout-content">
+<p>Justify declaring in code?</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="randomising" class="title-slide slide level1 center">
+<h1>Randomising</h1>
+<p>n.b.&nbsp;a truly randomised sequence can be in the same order as the original sequence. Most often we want pseudo-randomised sequences that impose some constraints on true randomisation.</p>
+</section>
+<section class="slide level2">
+
+<p>Let’s say we want to randomise the order in which cats are presented across participants to avoid systematic order effects.</p>
+</section>
+<section class="slide level2">
+
+<p>If we are using the spreadsheet method, randomisation is a property of the loop:</p>
+<ul>
+<li>we can tell the loop to randomise the sequence of cats,</li>
+<li>but we can’t tell the loop to <strong>pseudo</strong>-randomise the sequence of cats.</li>
 </ul>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
+<section class="slide level2">
+
+
+<img data-src="demos/variables/Screenshot%202024-07-18%20160058.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
+<div id="cc569666" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
+<span id="cb3-4"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
+<span id="cb3-5"><a href=""></a></span>
+<span id="cb3-6"><a href=""></a><span class="co"># Shuffle the list</span></span>
+<span id="cb3-7"><a href=""></a>random.shuffle(cats)</span>
+<span id="cb3-8"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
 </div>
 </div>
+</section>
+<section id="pseudo-randomising" class="slide level2 scrollable">
+<h2>pseudo-randomising</h2>
+<p>One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.</p>
+<p>For example, let’s say we never want the original order to be the outcome of shuffling the list.</p>
+<div id="b3c0f172" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
+</ul>
+<div id="aa82dbd9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Next we say: <strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
+</ul>
+<div id="daa8d74a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
+<span id="cb7-2"><a href=""></a>  random.shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Then verify that the resulting list is different from the original list</li>
+</ul>
+<div id="d1486027" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>shuffled_cats <span class="op">=</span> current_cats.copy()</span>
+<span id="cb8-2"><a href=""></a><span class="bu">print</span>(shuffled_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
+</div>
+</div>
+<!-- ```{python} -->
+<!-- #| eval: true -->
+<!-- import random -->
+<!-- # Make a list called `cats` containing the filenames. -->
+<!-- original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'] -->
+<!-- # Make copies of the original_cats list, not shuffled yet -->
+<!-- shuffled_cats = original_cats.copy() -->
+<!-- # Say that we are on the first attempt -->
+<!-- attempt = 0 -->
+<!-- # so, next, we say: -->
+<!-- # While both copies are the same, keep shuffling -->
+<!-- while True: -->
+<!--   if attempt == 0: -->
+<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
+<!--   while shuffled_cats == original_cats: -->
+<!--     attempt = attempt + 1 -->
+<!--     random.shuffle(shuffled_cats) -->
+<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
+<!--   break -->
+<!-- ``` -->
+</section>
+<section class="slide level2">
+
+<p>and we can do things more advanced than simple shuffling</p>
+</section></section>
+<section id="logic-flow-control" class="title-slide slide level1 center">
+<h1>Logic / Flow Control</h1>
+
+</section>
+
+<section id="hardware" class="title-slide slide level1 center">
+<h1>Hardware</h1>
+<aside class="notes">
+<p>Speaker notes go here.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -373,6 +668,7 @@ Matt
   <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -393,7 +689,8 @@ Matt
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -414,7 +711,7 @@ Matt
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -564,7 +861,7 @@ Matt
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -573,82 +870,6 @@ Matt
         ]
       });
     </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
-        }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
-        }
-
-    
-
-      })();
-
-    </script>
-
-    
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

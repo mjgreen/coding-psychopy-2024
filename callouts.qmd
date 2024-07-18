@@ -1,0 +1,19 @@
+:::{.callout-important title="response needed"}
+Response needed
+:::
+
+::: {.callout-tip title="response ok"}
+
+:::
+
+:::{.callout-warning title="response for approval"}
+
+:::
+
+
+::: {.callout-tip}
+
+:::
+
+
+##  {#slide3-id data-menu-title="Slide 3 title for outline"}
