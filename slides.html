@@ -412,6 +412,11 @@ Matt
 <li><a href="#/randomising" id="/toc-randomising">Randomising</a></li>
 <li><a href="#/logic-flow-control" id="/toc-logic-flow-control">Logic / Flow Control</a></li>
 <li><a href="#/hardware" id="/toc-hardware">Hardware</a></li>
+<li><a href="#/many-stimuli" id="/toc-many-stimuli">Many stimuli</a></li>
+<li><a href="#/doing-things-quickly" id="/toc-doing-things-quickly">Doing things quickly</a></li>
+<li><a href="#/complete-experiments" id="/toc-complete-experiments">Complete experiments</a></li>
+<li><a href="#/documentation-demos-forums" id="/toc-documentation-demos-forums">Documentation, Demos, Forums</a></li>
+<li><a href="#/python---javascript-generation" id="/toc-python---javascript-generation">Python -&gt; Javascript generation</a></li>
 </ul>
 </nav>
 </section>
@@ -473,7 +478,7 @@ Matt
 </section>
 <section id="handle-the-cats-in-code" class="slide level2">
 <h2>Handle the cats in code</h2>
-<div id="6addad29" class="cell" data-execution_count="1">
+<div id="9991c1ae" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
 <span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb1-3"><a href=""></a></span>
@@ -511,7 +516,7 @@ Matt
 <section id="advanced-note" class="slide level2">
 <h2>Advanced note</h2>
 <p>We can also bypass the Image component altogether.</p>
-<div id="e413cb18" class="cell" data-execution_count="2">
+<div id="dc8cfee4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
 <span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
 <span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -563,7 +568,7 @@ Matt
 <section class="slide level2">
 
 <p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
-<div id="cc569666" class="cell" data-execution_count="3">
+<div id="652eb700" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> random</span>
 <span id="cb3-2"><a href=""></a></span>
 <span id="cb3-3"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
@@ -573,7 +578,7 @@ Matt
 <span id="cb3-7"><a href=""></a>random.shuffle(cats)</span>
 <span id="cb3-8"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
+<pre><code>['cat2.jpg', 'cat1.jpg', 'cat3.jpg']</code></pre>
 </div>
 </div>
 </section>
@@ -581,30 +586,30 @@ Matt
 <h2>pseudo-randomising</h2>
 <p>One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.</p>
 <p>For example, let’s say we never want the original order to be the outcome of shuffling the list.</p>
-<div id="b3c0f172" class="cell" data-execution_count="4">
+<div id="2ae35bb3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
 </ul>
-<div id="aa82dbd9" class="cell" data-execution_count="5">
+<div id="3c30d7a4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Next we say: <strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
 </ul>
-<div id="daa8d74a" class="cell" data-execution_count="6">
+<div id="30a17aaf" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
 <span id="cb7-2"><a href=""></a>  random.shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Then verify that the resulting list is different from the original list</li>
 </ul>
-<div id="d1486027" class="cell" data-execution_count="7">
+<div id="1d4c3bcf" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>shuffled_cats <span class="op">=</span> current_cats.copy()</span>
 <span id="cb8-2"><a href=""></a><span class="bu">print</span>(shuffled_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
+<pre><code>['cat3.jpg', 'cat1.jpg', 'cat2.jpg']</code></pre>
 </div>
 </div>
 <!-- ```{python} -->
@@ -639,6 +644,31 @@ Matt
 
 <section id="hardware" class="title-slide slide level1 center">
 <h1>Hardware</h1>
+
+</section>
+
+<section id="many-stimuli" class="title-slide slide level1 center">
+<h1>Many stimuli</h1>
+
+</section>
+
+<section id="doing-things-quickly" class="title-slide slide level1 center">
+<h1>Doing things quickly</h1>
+<p>Faster than frame-rate actions can be done in loops in code components – components themselves are limited by the frame rate: “do every frame” is the most frequent option.</p>
+</section>
+
+<section id="complete-experiments" class="title-slide slide level1 center">
+<h1>Complete experiments</h1>
+
+</section>
+
+<section id="documentation-demos-forums" class="title-slide slide level1 center">
+<h1>Documentation, Demos, Forums</h1>
+
+</section>
+
+<section id="python---javascript-generation" class="title-slide slide level1 center">
+<h1>Python -&gt; Javascript generation</h1>
 <aside class="notes">
 <p>Speaker notes go here.</p>
 <style type="text/css">

@@ -212,6 +212,18 @@ and we can do things more advanced than simple shuffling
 
 # Hardware
 
+# Many stimuli
+
+# Doing things quickly
+
+Faster than frame-rate actions can be done in loops in code components -- components themselves are limited by the frame rate: "do every frame" is the most frequent option.
+
+# Complete experiments
+
+# Documentation, Demos, Forums
+
+# Python -> Javascript generation
+
 ::: {.notes}
 Speaker notes go here.
 :::
