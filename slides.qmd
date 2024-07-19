@@ -18,10 +18,29 @@ format:
     # width: 1920
 ---
 
+# Many stimuli (visual search)
 
-# Variables
+---
 
-## Fields can be constants or variables.
+* In visual search tasks (for example) you need to put say 100 individual letters on the screen in different positions.
+* This would require you to make 100 Text stims and supply each one's x and y and letter content
+* However since you can generate Text stims in code, this becomes a much easier task -- just create them in a loop
+
+
+---
+
+:::{.callout-important title="response needed"}
+refer to the official psychopy demo (timestamp 4:42)
+
+[Getting started with Code Components in PsychoPy (by making a visual search task!](https://youtu.be/0dJgLf7BxbE)
+:::
+
+
+# Fields
+
+Fields can be constants or variables.
+
+## Constants for fields
 
 To present an image you can supply the image's filename directly in the `Image` field ('constant' method).
 
@@ -29,7 +48,7 @@ To present an image you can supply the image's filename directly in the `Image` 
 ![](demos/variables/Screenshot 2024-07-18 135559.png){width="100%"}
 :::
 
-## {#slide3-id data-menu-title="foo"}
+## Variables for fields
 
 To present the same image you can supply the image's filename in a spreadsheet and use the column header as a variable ('variable' method)
 
@@ -38,19 +57,17 @@ To present the same image you can supply the image's filename in a spreadsheet a
 ![](demos/variables/Screenshot 2024-07-18 133914.png){width="25%"}
 :::
 
----
+## Why use variables in fields?
 
 * The 'variable' method allows you to present a sequence of images by passing a list of their names through the `Image` component in a loop.
 
 * Variable names are usually column headers in the spreadsheet that controls the loop, as in the previous example.
 
-* Variable names can also be things that you declare in code (next section)
+* Variable names can also be things that you declare explicitly in code 
 
-# Declaring in code
+## Declaring variables for fields in code
 
----
-
-## Handle the cats in code
+Handle the cats in code
 
 ```{python}
 # Make a list called `cats` containing the filenames.
@@ -106,7 +123,7 @@ my_image.Image = cats[i]
 ```
 
 
-## Why declare in code?
+## Why declare fields in code?
 
 * It doesn't always repay the effort to declare variables in code.
 * In the last example the best way to present the cats in a sequence is the spreadsheet method.
@@ -115,7 +132,7 @@ my_image.Image = cats[i]
 Justify declaring in code?
 :::
 
-# Randomising
+# Randomising and pseudo-randomising sequences
 
 n.b. a truly randomised sequence can be in the same order as the original sequence. Most often we want pseudo-randomised sequences that impose some constraints on true randomisation.
 
@@ -123,37 +140,44 @@ n.b. a truly randomised sequence can be in the same order as the original sequen
 
 Let's say we want to randomise the order in which cats are presented across participants to avoid systematic order effects.
 
----
+## Pure randomising
 
 If we are using the spreadsheet method, randomisation is a property of the loop: 
 
 * we can tell the loop to randomise the sequence of cats, 
 * but we can't tell the loop to __pseudo__-randomise the sequence of cats.
 
----
+## Pure randomising
 
 ![](demos/variables/Screenshot 2024-07-18 160058.png)
 
----
+## Pure randomising
 
 If we are using code we can use `shuffle` on the list to get randomisation (not yet pseudo-randomisation but see later for that)
 
 ```{python}
-import random
+# We have to import the shuffle routine from the random library
+from random import shuffle
 
 # Make a list called `cats` containing the filenames.
 cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
 
 # Shuffle the list
-random.shuffle(cats)
+shuffle(cats)
+
+# View the list
 print(cats)
 ```
 
-## pseudo-randomising {.scrollable}
+## Pseudo-randomising 
 
 One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.
 
 For example, let's say we never want the original order to be the outcome of shuffling the list.
+
+## Pseudo-randomising {.scrollable}
+
+* Make a list of cat images as before 
 
 ```{python}
 original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
@@ -165,58 +189,118 @@ original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
 current_cats = original_cats.copy()
 ```
 
-* Next we say: __while the `current_cats` list is still the same as the original, shuffle the `current_cats` list__
+## Pseudo-randomising {.scrollable}
+
+* Next we say: 
+  * __while the `current_cats` list is still the same as the original, shuffle the `current_cats` list__
 
 ```{python}
 while current_cats == original_cats:
-  random.shuffle(current_cats)
+  shuffle(current_cats)
 ```
 
 * Then verify that the resulting list is different from the original list
 
 ```{python}
-shuffled_cats = current_cats.copy()
-print(shuffled_cats)
+print(current_cats)
+```
+
+## Putting it all together
+
+code block for shuffling
+
+```{python}
+from random import shuffle
+original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+current_cats = original_cats.copy()
+while current_cats == original_cats:
+  shuffle(current_cats)
+```
+
+print to verify that the shuffled list is not the same as the original list
+
+```{python}
+print(current_cats)
 ```
 
 
-<!-- ```{python} -->
-<!-- #| eval: true -->
-<!-- import random -->
-
-<!-- # Make a list called `cats` containing the filenames. -->
-<!-- original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'] -->
-
-<!-- # Make copies of the original_cats list, not shuffled yet -->
-<!-- shuffled_cats = original_cats.copy() -->
-
-<!-- # Say that we are on the first attempt -->
-<!-- attempt = 0 -->
-<!-- # so, next, we say: -->
-<!-- # While both copies are the same, keep shuffling -->
-<!-- while True: -->
-<!--   if attempt == 0: -->
-<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
-<!--   while shuffled_cats == original_cats: -->
-<!--     attempt = attempt + 1 -->
-<!--     random.shuffle(shuffled_cats) -->
-<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
-<!--   break -->
-<!-- ``` -->
+# Many stimuli (pure code no Builder)
 
 ---
 
-and we can do things more advanced than simple shuffling
+![](demos/vis-search-no-builder/main.png)
+
+
+
 
 # Logic / Flow Control
 
-# Hardware
+---
 
-# Many stimuli
+* Logic boils down to saying 'if ... then'
 
-# Doing things quickly
+---
 
-Faster than frame-rate actions can be done in loops in code components -- components themselves are limited by the frame rate: "do every frame" is the most frequent option.
+:::{.callout-important title="response needed"}
+people asked for changing the flow based on a participant's earlier responses
+:::
+
+---
+
+:::{.callout-important title="response needed"}
+demonstrate `response.keys`
+:::
+
+---
+
+:::{.callout-important title="response needed"}
+demonstrate free-tect responses -- the enter your age example
+:::
+
+
+# Hardware and the `iohub` framework
+
+## TMS 
+
+* TMS pulses are handled by the parallel port component.
+* TMS pulses need to be sent in quick succession
+* Components can do things fairly frequently -- but not more frequently than the frame rate.
+* At 60 Hz this is once every 16.6 ms.
+* Individual TMS pulses sometimes need to happen more quickly -- at 100 Hz is common, so every 10 ms 
+* Faster than frame-rate actions can be done in loops in code components
+
+## TMS - Alex
+
+:::{.callout-important title="response needed"}
+refer to Alex's TMS experiment
+:::
+
+## Wacom
+
+* The Wacom tablet allows participants to trace paths through mazes so it can be used for way-finding and related tasks.
+* There is no Wacom component but there is an `iohub` _device_ for Wacom in python
+
+## Wacom - Marina
+
+:::{.callout-important title="response needed"}
+refer to Marina's Wacom experiment
+:::
+
+## Eye-tracking
+
+* There is now an eye-tracking component but I haven't used it yet.
+* There is an `iohub` _device_ for each eye-tracker in common use
+* You can use mouse simulation of eye-movements while developing the experiment
+    * this is because there is an iohub device for mouse and you can switch easily between different iohub devices (could run the same task with the Wacom pen device)
+
+## Eye-tracking - Jan's experiment
+
+:::{.callout-important title="response needed"}
+refer to the foraging game
+:::
+
+
+
 
 # Complete experiments
 

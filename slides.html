@@ -407,13 +407,12 @@ Matt
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li><a href="#/variables" id="/toc-variables">Variables</a></li>
-<li><a href="#/declaring-in-code" id="/toc-declaring-in-code">Declaring in code</a></li>
-<li><a href="#/randomising" id="/toc-randomising">Randomising</a></li>
+<li><a href="#/many-stimuli-visual-search" id="/toc-many-stimuli-visual-search">Many stimuli (visual search)</a></li>
+<li><a href="#/fields" id="/toc-fields">Fields</a></li>
+<li><a href="#/randomising-and-pseudo-randomising-sequences" id="/toc-randomising-and-pseudo-randomising-sequences">Randomising and pseudo-randomising sequences</a></li>
+<li><a href="#/many-stimuli-pure-code-no-builder" id="/toc-many-stimuli-pure-code-no-builder">Many stimuli (pure code no Builder)</a></li>
 <li><a href="#/logic-flow-control" id="/toc-logic-flow-control">Logic / Flow Control</a></li>
-<li><a href="#/hardware" id="/toc-hardware">Hardware</a></li>
-<li><a href="#/many-stimuli" id="/toc-many-stimuli">Many stimuli</a></li>
-<li><a href="#/doing-things-quickly" id="/toc-doing-things-quickly">Doing things quickly</a></li>
+<li><a href="#/hardware-and-the-iohub-framework" id="/toc-hardware-and-the-iohub-framework">Hardware and the <code>iohub</code> framework</a></li>
 <li><a href="#/complete-experiments" id="/toc-complete-experiments">Complete experiments</a></li>
 <li><a href="#/documentation-demos-forums" id="/toc-documentation-demos-forums">Documentation, Demos, Forums</a></li>
 <li><a href="#/python---javascript-generation" id="/toc-python---javascript-generation">Python -&gt; Javascript generation</a></li>
@@ -421,12 +420,44 @@ Matt
 </nav>
 </section>
 <section>
-<section id="variables" class="title-slide slide level1 center">
-<h1>Variables</h1>
+<section id="many-stimuli-visual-search" class="title-slide slide level1 center">
+<h1>Many stimuli (visual search)</h1>
 
 </section>
-<section id="fields-can-be-constants-or-variables." class="slide level2">
-<h2>Fields can be constants or variables.</h2>
+<section class="slide level2">
+
+<ul>
+<li>In visual search tasks (for example) you need to put say 100 individual letters on the screen in different positions.</li>
+<li>This would require you to make 100 Text stims and supply each one’s x and y and letter content</li>
+<li>However since you can generate Text stims in code, this becomes a much easier task – just create them in a loop</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>refer to the official psychopy demo (timestamp 4:42)</p>
+<p><a href="https://youtu.be/0dJgLf7BxbE">Getting started with Code Components in PsychoPy (by making a visual search task!</a></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="fields" class="title-slide slide level1 center">
+<h1>Fields</h1>
+<p>Fields can be constants or variables.</p>
+</section>
+<section id="constants-for-fields" class="slide level2">
+<h2>Constants for fields</h2>
 <p>To present an image you can supply the image’s filename directly in the <code>Image</code> field (‘constant’ method).</p>
 <div title="method 1 using a constant">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -444,8 +475,8 @@ Matt
 </div>
 </div>
 </section>
-<section id="slide3-id" class="slide level2" data-menu-title="foo">
-<h2></h2>
+<section id="variables-for-fields" class="slide level2">
+<h2>Variables for fields</h2>
 <p>To present the same image you can supply the image’s filename in a spreadsheet and use the column header as a variable (‘variable’ method)</p>
 <div title="method 2 using a reference to the spreadsheet">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -463,22 +494,18 @@ Matt
 </div>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="why-use-variables-in-fields" class="slide level2">
+<h2>Why use variables in fields?</h2>
 <ul>
 <li><p>The ‘variable’ method allows you to present a sequence of images by passing a list of their names through the <code>Image</code> component in a loop.</p></li>
 <li><p>Variable names are usually column headers in the spreadsheet that controls the loop, as in the previous example.</p></li>
-<li><p>Variable names can also be things that you declare in code (next section)</p></li>
+<li><p>Variable names can also be things that you declare explicitly in code</p></li>
 </ul>
-</section></section>
-<section>
-<section id="declaring-in-code" class="title-slide slide level1 center">
-<h1>Declaring in code</h1>
-
 </section>
-<section id="handle-the-cats-in-code" class="slide level2">
-<h2>Handle the cats in code</h2>
-<div id="9991c1ae" class="cell" data-execution_count="1">
+<section id="declaring-variables-for-fields-in-code" class="slide level2">
+<h2>Declaring variables for fields in code</h2>
+<p>Handle the cats in code</p>
+<div id="c5ddd17a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
 <span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb1-3"><a href=""></a></span>
@@ -516,14 +543,14 @@ Matt
 <section id="advanced-note" class="slide level2">
 <h2>Advanced note</h2>
 <p>We can also bypass the Image component altogether.</p>
-<div id="dc8cfee4" class="cell" data-execution_count="2">
+<div id="b1a4a001" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
 <span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
 <span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="why-declare-in-code" class="slide level2">
-<h2>Why declare in code?</h2>
+<section id="why-declare-fields-in-code" class="slide level2">
+<h2>Why declare fields in code?</h2>
 <ul>
 <li>It doesn’t always repay the effort to declare variables in code.</li>
 <li>In the last example the best way to present the cats in a sequence is the spreadsheet method.</li>
@@ -545,118 +572,268 @@ Matt
 </div>
 </section></section>
 <section>
-<section id="randomising" class="title-slide slide level1 center">
-<h1>Randomising</h1>
+<section id="randomising-and-pseudo-randomising-sequences" class="title-slide slide level1 center">
+<h1>Randomising and pseudo-randomising sequences</h1>
 <p>n.b.&nbsp;a truly randomised sequence can be in the same order as the original sequence. Most often we want pseudo-randomised sequences that impose some constraints on true randomisation.</p>
 </section>
 <section class="slide level2">
 
 <p>Let’s say we want to randomise the order in which cats are presented across participants to avoid systematic order effects.</p>
 </section>
-<section class="slide level2">
-
+<section id="pure-randomising" class="slide level2">
+<h2>Pure randomising</h2>
 <p>If we are using the spreadsheet method, randomisation is a property of the loop:</p>
 <ul>
 <li>we can tell the loop to randomise the sequence of cats,</li>
 <li>but we can’t tell the loop to <strong>pseudo</strong>-randomise the sequence of cats.</li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="pure-randomising-1" class="slide level2">
+<h2>Pure randomising</h2>
 
 <img data-src="demos/variables/Screenshot%202024-07-18%20160058.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<section id="pure-randomising-2" class="slide level2">
+<h2>Pure randomising</h2>
 <p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
-<div id="652eb700" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> random</span>
-<span id="cb3-2"><a href=""></a></span>
-<span id="cb3-3"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
-<span id="cb3-4"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
-<span id="cb3-5"><a href=""></a></span>
-<span id="cb3-6"><a href=""></a><span class="co"># Shuffle the list</span></span>
-<span id="cb3-7"><a href=""></a>random.shuffle(cats)</span>
-<span id="cb3-8"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="847b2b29" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># We have to import the shuffle routine from the random library</span></span>
+<span id="cb3-2"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
+<span id="cb3-5"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
+<span id="cb3-6"><a href=""></a></span>
+<span id="cb3-7"><a href=""></a><span class="co"># Shuffle the list</span></span>
+<span id="cb3-8"><a href=""></a>shuffle(cats)</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="co"># View the list</span></span>
+<span id="cb3-11"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat2.jpg', 'cat1.jpg', 'cat3.jpg']</code></pre>
+<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
 </div>
 </div>
 </section>
-<section id="pseudo-randomising" class="slide level2 scrollable">
-<h2>pseudo-randomising</h2>
+<section id="pseudo-randomising" class="slide level2">
+<h2>Pseudo-randomising</h2>
 <p>One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.</p>
 <p>For example, let’s say we never want the original order to be the outcome of shuffling the list.</p>
-<div id="2ae35bb3" class="cell" data-execution_count="4">
+</section>
+<section id="pseudo-randomising-1" class="slide level2 scrollable">
+<h2>Pseudo-randomising</h2>
+<ul>
+<li>Make a list of cat images as before</li>
+</ul>
+<div id="ea276291" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
 </ul>
-<div id="3c30d7a4" class="cell" data-execution_count="5">
+<div id="bbe34200" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="pseudo-randomising-2" class="slide level2 scrollable">
+<h2>Pseudo-randomising</h2>
 <ul>
-<li>Next we say: <strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
+<li>Next we say:
+<ul>
+<li><strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
+</ul></li>
 </ul>
-<div id="30a17aaf" class="cell" data-execution_count="6">
+<div id="79401e15" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
-<span id="cb7-2"><a href=""></a>  random.shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Then verify that the resulting list is different from the original list</li>
 </ul>
-<div id="1d4c3bcf" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>shuffled_cats <span class="op">=</span> current_cats.copy()</span>
-<span id="cb8-2"><a href=""></a><span class="bu">print</span>(shuffled_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1c8044c0" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat3.jpg', 'cat1.jpg', 'cat2.jpg']</code></pre>
+<pre><code>['cat2.jpg', 'cat1.jpg', 'cat3.jpg']</code></pre>
 </div>
 </div>
-<!-- ```{python} -->
-<!-- #| eval: true -->
-<!-- import random -->
-<!-- # Make a list called `cats` containing the filenames. -->
-<!-- original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'] -->
-<!-- # Make copies of the original_cats list, not shuffled yet -->
-<!-- shuffled_cats = original_cats.copy() -->
-<!-- # Say that we are on the first attempt -->
-<!-- attempt = 0 -->
-<!-- # so, next, we say: -->
-<!-- # While both copies are the same, keep shuffling -->
-<!-- while True: -->
-<!--   if attempt == 0: -->
-<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
-<!--   while shuffled_cats == original_cats: -->
-<!--     attempt = attempt + 1 -->
-<!--     random.shuffle(shuffled_cats) -->
-<!--     print("attempt ", attempt, ": ", shuffled_cats) -->
-<!--   break -->
-<!-- ``` -->
+</section>
+<section id="putting-it-all-together" class="slide level2">
+<h2>Putting it all together</h2>
+<p>code block for shuffling</p>
+<div id="228738ce" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
+<span id="cb10-2"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
+<span id="cb10-3"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span>
+<span id="cb10-4"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
+<span id="cb10-5"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>print to verify that the shuffled list is not the same as the original list</p>
+<div id="38cbe085" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="many-stimuli-pure-code-no-builder" class="title-slide slide level1 center">
+<h1>Many stimuli (pure code no Builder)</h1>
+
 </section>
 <section class="slide level2">
 
-<p>and we can do things more advanced than simple shuffling</p>
-</section></section>
+
+<img data-src="demos/vis-search-no-builder/main.png" class="r-stretch"></section></section>
+<section>
 <section id="logic-flow-control" class="title-slide slide level1 center">
 <h1>Logic / Flow Control</h1>
 
 </section>
+<section class="slide level2">
 
-<section id="hardware" class="title-slide slide level1 center">
-<h1>Hardware</h1>
+<ul>
+<li>Logic boils down to saying ‘if … then’</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>people asked for changing the flow based on a participant’s earlier responses</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>demonstrate <code>response.keys</code></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>demonstrate free-tect responses – the enter your age example</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="hardware-and-the-iohub-framework" class="title-slide slide level1 center">
+<h1>Hardware and the <code>iohub</code> framework</h1>
 
 </section>
-
-<section id="many-stimuli" class="title-slide slide level1 center">
-<h1>Many stimuli</h1>
-
+<section id="tms" class="slide level2">
+<h2>TMS</h2>
+<ul>
+<li>TMS pulses are handled by the parallel port component.</li>
+<li>TMS pulses need to be sent in quick succession</li>
+<li>Components can do things fairly frequently – but not more frequently than the frame rate.</li>
+<li>At 60 Hz this is once every 16.6 ms.</li>
+<li>Individual TMS pulses sometimes need to happen more quickly – at 100 Hz is common, so every 10 ms</li>
+<li>Faster than frame-rate actions can be done in loops in code components</li>
+</ul>
 </section>
-
-<section id="doing-things-quickly" class="title-slide slide level1 center">
-<h1>Doing things quickly</h1>
-<p>Faster than frame-rate actions can be done in loops in code components – components themselves are limited by the frame rate: “do every frame” is the most frequent option.</p>
+<section id="tms---alex" class="slide level2">
+<h2>TMS - Alex</h2>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>refer to Alex’s TMS experiment</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-
+<section id="wacom" class="slide level2">
+<h2>Wacom</h2>
+<ul>
+<li>The Wacom tablet allows participants to trace paths through mazes so it can be used for way-finding and related tasks.</li>
+<li>There is no Wacom component but there is an <code>iohub</code> <em>device</em> for Wacom in python</li>
+</ul>
+</section>
+<section id="wacom---marina" class="slide level2">
+<h2>Wacom - Marina</h2>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>refer to Marina’s Wacom experiment</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="eye-tracking" class="slide level2">
+<h2>Eye-tracking</h2>
+<ul>
+<li>There is now an eye-tracking component but I haven’t used it yet.</li>
+<li>There is an <code>iohub</code> <em>device</em> for each eye-tracker in common use</li>
+<li>You can use mouse simulation of eye-movements while developing the experiment
+<ul>
+<li>this is because there is an iohub device for mouse and you can switch easily between different iohub devices (could run the same task with the Wacom pen device)</li>
+</ul></li>
+</ul>
+</section>
+<section id="eye-tracking---jans-experiment" class="slide level2">
+<h2>Eye-tracking - Jan’s experiment</h2>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>refer to the foraging game</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section id="complete-experiments" class="title-slide slide level1 center">
 <h1>Complete experiments</h1>
 
