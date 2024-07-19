@@ -505,7 +505,7 @@ Matt
 <section id="declaring-variables-for-fields-in-code" class="slide level2">
 <h2>Declaring variables for fields in code</h2>
 <p>Handle the cats in code</p>
-<div id="c5ddd17a" class="cell" data-execution_count="1">
+<div id="fe6ad775" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
 <span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb1-3"><a href=""></a></span>
@@ -543,7 +543,7 @@ Matt
 <section id="advanced-note" class="slide level2">
 <h2>Advanced note</h2>
 <p>We can also bypass the Image component altogether.</p>
-<div id="b1a4a001" class="cell" data-execution_count="2">
+<div id="ce0909f9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
 <span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
 <span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -595,7 +595,7 @@ Matt
 <section id="pure-randomising-2" class="slide level2">
 <h2>Pure randomising</h2>
 <p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
-<div id="847b2b29" class="cell" data-execution_count="3">
+<div id="73e61401" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># We have to import the shuffle routine from the random library</span></span>
 <span id="cb3-2"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb3-3"><a href=""></a></span>
@@ -608,7 +608,7 @@ Matt
 <span id="cb3-10"><a href=""></a><span class="co"># View the list</span></span>
 <span id="cb3-11"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
+<pre><code>['cat1.jpg', 'cat2.jpg', 'cat3.jpg']</code></pre>
 </div>
 </div>
 </section>
@@ -622,13 +622,13 @@ Matt
 <ul>
 <li>Make a list of cat images as before</li>
 </ul>
-<div id="ea276291" class="cell" data-execution_count="4">
+<div id="2af069a5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
 </ul>
-<div id="bbe34200" class="cell" data-execution_count="5">
+<div id="f861333f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -640,24 +640,24 @@ Matt
 <li><strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
 </ul></li>
 </ul>
-<div id="79401e15" class="cell" data-execution_count="6">
+<div id="be2397c1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
 <span id="cb7-2"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Then verify that the resulting list is different from the original list</li>
 </ul>
-<div id="1c8044c0" class="cell" data-execution_count="7">
+<div id="b172d494" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat2.jpg', 'cat1.jpg', 'cat3.jpg']</code></pre>
+<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
 </div>
 </div>
 </section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <p>code block for shuffling</p>
-<div id="228738ce" class="cell" data-execution_count="8">
+<div id="3092609f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb10-2"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb10-3"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span>
@@ -665,10 +665,10 @@ Matt
 <span id="cb10-5"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>print to verify that the shuffled list is not the same as the original list</p>
-<div id="38cbe085" class="cell" data-execution_count="9">
+<div id="ea324fc5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
+<pre><code>['cat3.jpg', 'cat2.jpg', 'cat1.jpg']</code></pre>
 </div>
 </div>
 </section></section>
@@ -679,8 +679,14 @@ Matt
 </section>
 <section class="slide level2">
 
+<p>This runs in python without opening PsychoPy …</p>
 
-<img data-src="demos/vis-search-no-builder/main.png" class="r-stretch"></section></section>
+<img data-src="demos/vis-search-no-builder/main.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>… but you can also open it in PsychoPy and run it from there</p>
+
+<img data-src="demos/vis-search-no-builder/main-in-coder.png" class="r-stretch"></section></section>
 <section>
 <section id="logic-flow-control" class="title-slide slide level1 center">
 <h1>Logic / Flow Control</h1>

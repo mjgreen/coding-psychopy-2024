@@ -228,9 +228,15 @@ print(current_cats)
 
 ---
 
+This runs in python without opening PsychoPy ...
+
 ![](demos/vis-search-no-builder/main.png)
 
+---
 
+... but you can also open it in PsychoPy and run it from  there
+
+![](demos/vis-search-no-builder/main-in-coder.png)
 
 
 # Logic / Flow Control
