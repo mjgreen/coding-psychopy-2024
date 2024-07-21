@@ -413,9 +413,15 @@ Matt
 <li><a href="#/many-stimuli-pure-code-no-builder" id="/toc-many-stimuli-pure-code-no-builder">Many stimuli (pure code no Builder)</a></li>
 <li><a href="#/logic-flow-control" id="/toc-logic-flow-control">Logic / Flow Control</a></li>
 <li><a href="#/hardware-and-the-iohub-framework" id="/toc-hardware-and-the-iohub-framework">Hardware and the <code>iohub</code> framework</a></li>
+<li><a href="#/add-data-from-code-to-the-csv-file" id="/toc-add-data-from-code-to-the-csv-file">Add data from code to the csv file</a></li>
+<li><a href="#/do-not-make-multiple-experiments-for-different-conditions-of-the-same-experiment" id="/toc-do-not-make-multiple-experiments-for-different-conditions-of-the-same-experiment">Do not make multiple experiments for different conditions of the same experiment</a></li>
+<li><a href="#/how-to-use-the-gui-to-offer-options" id="/toc-how-to-use-the-gui-to-offer-options">How to use the GUI to offer options</a></li>
+<li><a href="#/how-to-compute-an-accuracy-rate-for-a-block-and-use-it-for-thresholding" id="/toc-how-to-compute-an-accuracy-rate-for-a-block-and-use-it-for-thresholding">How to compute an accuracy rate for a block and use it for thresholding</a></li>
 <li><a href="#/complete-experiments" id="/toc-complete-experiments">Complete experiments</a></li>
 <li><a href="#/documentation-demos-forums" id="/toc-documentation-demos-forums">Documentation, Demos, Forums</a></li>
+<li><a href="#/online" id="/toc-online">Online</a></li>
 <li><a href="#/python---javascript-generation" id="/toc-python---javascript-generation">Python -&gt; Javascript generation</a></li>
+<li><a href="#/shelf" id="/toc-shelf">Shelf</a></li>
 </ul>
 </nav>
 </section>
@@ -505,7 +511,7 @@ Matt
 <section id="declaring-variables-for-fields-in-code" class="slide level2">
 <h2>Declaring variables for fields in code</h2>
 <p>Handle the cats in code</p>
-<div id="fe6ad775" class="cell" data-execution_count="1">
+<div id="b65424ae" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
 <span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb1-3"><a href=""></a></span>
@@ -543,7 +549,7 @@ Matt
 <section id="advanced-note" class="slide level2">
 <h2>Advanced note</h2>
 <p>We can also bypass the Image component altogether.</p>
-<div id="ce0909f9" class="cell" data-execution_count="2">
+<div id="23ae0ab3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
 <span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
 <span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -595,7 +601,7 @@ Matt
 <section id="pure-randomising-2" class="slide level2">
 <h2>Pure randomising</h2>
 <p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
-<div id="73e61401" class="cell" data-execution_count="3">
+<div id="7d143e40" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># We have to import the shuffle routine from the random library</span></span>
 <span id="cb3-2"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb3-3"><a href=""></a></span>
@@ -608,7 +614,7 @@ Matt
 <span id="cb3-10"><a href=""></a><span class="co"># View the list</span></span>
 <span id="cb3-11"><a href=""></a><span class="bu">print</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat1.jpg', 'cat2.jpg', 'cat3.jpg']</code></pre>
+<pre><code>['cat2.jpg', 'cat1.jpg', 'cat3.jpg']</code></pre>
 </div>
 </div>
 </section>
@@ -622,13 +628,13 @@ Matt
 <ul>
 <li>Make a list of cat images as before</li>
 </ul>
-<div id="2af069a5" class="cell" data-execution_count="4">
+<div id="77c84d66" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
 </ul>
-<div id="f861333f" class="cell" data-execution_count="5">
+<div id="cd01c2be" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -640,24 +646,24 @@ Matt
 <li><strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
 </ul></li>
 </ul>
-<div id="be2397c1" class="cell" data-execution_count="6">
+<div id="26366ae1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
 <span id="cb7-2"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Then verify that the resulting list is different from the original list</li>
 </ul>
-<div id="b172d494" class="cell" data-execution_count="7">
+<div id="39e294a3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat1.jpg', 'cat3.jpg', 'cat2.jpg']</code></pre>
+<pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
 </div>
 </div>
 </section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <p>code block for shuffling</p>
-<div id="3092609f" class="cell" data-execution_count="8">
+<div id="b4eab3b8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb10-2"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb10-3"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span>
@@ -665,10 +671,10 @@ Matt
 <span id="cb10-5"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>print to verify that the shuffled list is not the same as the original list</p>
-<div id="ea324fc5" class="cell" data-execution_count="9">
+<div id="c936d974" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat3.jpg', 'cat2.jpg', 'cat1.jpg']</code></pre>
+<pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
 </div>
 </div>
 </section></section>
@@ -757,6 +763,77 @@ Matt
 <h1>Hardware and the <code>iohub</code> framework</h1>
 
 </section>
+<section id="eeg" class="slide level2">
+<h2>EEG</h2>
+<ul>
+<li>EEG is handled by the parallel port component</li>
+<li>In EEG all we are doing is sending messages into the data: recording of data from the electrodes is handled by an entirely separate system (separate recorder PC)</li>
+<li>The amplifiers send data from the electrodes over fibre-optic cables to a box that translates optical to usb and feeds the recorder PC usb signals representing activity at each electrode.</li>
+</ul>
+</section>
+<section id="eeg-1" class="slide level2">
+<h2>EEG</h2>
+<ul>
+<li>We send messages from the display PC to the recorder PC by feeding an additional channel into the box that translates optical to USB.</li>
+<li>So an EEG signal from the display PC acts like a dummy electrode channel</li>
+</ul>
+</section>
+<section id="eeg---the-parallel-port" class="slide level2">
+<h2>EEG - the parallel port</h2>
+<ul>
+<li>the parallel port is a really old channel of communication</li>
+<li>it was better than the previous alternative (serial port) because it allowed messages to be sent without waiting in a queue</li>
+<li>you can set it to send integers from 0 to 256</li>
+<li>0 is ‘off’, everything else is a variant of ‘on’</li>
+</ul>
+</section>
+<section id="eeg---parallel-port-messages" class="slide level2">
+<h2>EEG - parallel port messages</h2>
+<ul>
+<li>a common mistake is to think that changing from ‘1’ to ‘2’ is a legitimate message whose content is ‘2’ because sending ‘2’ is a change of state from ‘1’.</li>
+<li>changing from ‘1’ to ‘2’ will be interpreted as <em>change to ‘on’ from ‘on’</em> which is no change at all – the port will still be sending ‘1’</li>
+<li>if the last message was ‘1’ and you now want to send ‘2’, you have to go via ‘0’</li>
+</ul>
+</section>
+<section id="eeg---parallel-port-messages-1" class="slide level2">
+<h2>EEG - parallel port messages</h2>
+<ul>
+<li>you have always been able to send parallel port messages in code.</li>
+<li>but now you can send messages in a parallel port Component</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="column-screen">
+<p><img data-src="demos/eeg/Screenshot%20from%202024-07-21%2019-13-57.png" style="width:75.0%"></p>
+</div>
+<p>By default, <code>"Stop data"</code> is set to 0 to ensure that any subsequent ‘on’ messages between 1 and 256 will be interpreted as a change of state from ‘off’ to ‘on’</p>
+</section>
+<section class="slide level2">
+
+<div class="column-screen">
+<p><img data-src="demos/eeg/Screenshot%20from%202024-07-21%2019-20-17.png" style="width:75.0%"></p>
+</div>
+<p>You can send a signal at some time in seconds.milliseconds; after some number of frames; or <strong>based upon some condition being satisfied</strong>.</p>
+</section>
+<section id="eeg---conditional-trigger" class="slide level2">
+<h2>EEG - conditional trigger</h2>
+<p>Since we can send a message as soon as some condition is satisfied, we can send a message as soon as the stimulus is visible on screen (for example).</p>
+<p>Assume the Image component for the stimulus is named ‘stimulus_1’. The ‘Condition’ would then be as follows (n.b.&nbsp;that we have to put a dollar sign in front of the actual python code so that the Builder knows we are supplying something to be evaluated rather than a literal piece of text)</p>
+<div id="85069627" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>$stimulus_1.status <span class="op">==</span> STARTED</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="eeg---conditional-trigger-1" class="slide level2">
+<h2>EEG - conditional trigger</h2>
+<div class="column-screen">
+<p><img data-src="demos/eeg/Screenshot%20from%202024-07-21%2019-36-30.png" style="width:100.0%"></p>
+</div>
+</section>
+<section id="eeg---conditional-trigger-2" class="slide level2">
+<h2>EEG - conditional trigger</h2>
+<p>Note that I shortened the duration from the default 1 second to 0.1 seconds. This is because you want to send the 0 (<code>"Stop data"</code> value) soon after the ‘on’ signal’ so that the port is clean quickly in case you want to send another message quickly (maybe send a ‘2’ as soon as the stimulus is no longer visible). If that ‘2’ signal came while the port was still saying ‘1’ then the ‘2’ just would not be recognised as a change of state leading to no ‘2’ message being sent (because ‘1’ to ‘2’ is ‘on’ to ‘still on’)</p>
+</section>
 <section id="tms" class="slide level2">
 <h2>TMS</h2>
 <ul>
@@ -840,6 +917,140 @@ Matt
 </div>
 </div>
 </section></section>
+<section>
+<section id="add-data-from-code-to-the-csv-file" class="title-slide slide level1 center">
+<h1>Add data from code to the csv file</h1>
+
+</section>
+<section id="add-data-from-code-to-the-csv-file-1" class="slide level2">
+<h2>Add data from code to the csv file</h2>
+<ul>
+<li>Everything supplied in a loop spreadsheet to a loop gets recorded in the output file.</li>
+<li>Everything computed by (non-Code) Components gets recorded to the output file
+<ul>
+<li>This covers response keys for keyboard components and the RTs for those responses for example</li>
+</ul></li>
+</ul>
+<p><strong>BUT nothing that you create in Code gets recorded to the output file</strong> unless you issue an instruction to record it.</p>
+</section>
+<section id="add-data-from-code-to-the-csv-file-2" class="slide level2">
+<h2>Add data from code to the csv file</h2>
+<p>The instruction is simple enough though:</p>
+<div id="71e4778b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>thisExpAddData(<span class="st">"accuracy threshold for block 1"</span>, acc_thresh_block_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first argument is going to end up as the column header in the csv file.</p>
+<p>The second argument is the value you want recorded in the relevant row in that column</p>
+</section>
+<section id="add-data-from-code-to-the-csv-file-3" class="slide level2">
+<h2>Add data from code to the csv file</h2>
+<p>PsychoPy output files are not very human-friendly.</p>
+<p>For headers like <code>key_resp.resp</code> it can be hard to remember which of several keyboard response this column refers to when you are trying to identify the main response in the experiment at data analysis time</p>
+</section>
+<section id="add-data-from-code-to-the-csv-file-4" class="slide level2">
+<h2>Add data from code to the csv file</h2>
+<p>It is good practice to rename Components to get better output. If the keyboard component is the response to “Have you seen this face before?”, a name like <code>face_familiarity.resp</code> might be better than <code>key_resp.resp</code>.</p>
+<p>Rename the Keyboard Component to <code>face_familiarity</code> to get variables:</p>
+<ul>
+<li><code>face_familiarity.resp</code> for which key they pressed,</li>
+<li><code>face_familiarity.rt</code> for the RT, and</li>
+<li><code>face_familiarity.corr</code> for the accuracy.</li>
+</ul>
+</section>
+<section id="add-data-from-code-to-the-csv-file-5" class="slide level2">
+<h2>Add data from code to the csv file</h2>
+<p>You can exert finer control if you rename the variables using Code.</p>
+<div id="83798c17" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 keys pressed"</span>, key_resp.keys)</span>
+<span id="cb15-2"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 accuracy"</span>, key_resp.corr)</span>
+<span id="cb15-3"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 response time"</span>, key_resp.keys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="do-not-make-multiple-experiments-for-different-conditions-of-the-same-experiment" class="title-slide slide level1 center">
+<h1>Do not make multiple experiments for different conditions of the same experiment</h1>
+
+</section>
+<section class="slide level2">
+
+<p>Just feed in different spreadsheets using logic to choose the appropriate sheet for this run</p>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>More needed</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="how-to-use-the-gui-to-offer-options" class="title-slide slide level1 center">
+<h1>How to use the GUI to offer options</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li>drop-downs</li>
+<li>enter demographics</li>
+<li>RECORD THOSE VALUES USING CODE</li>
+</ul>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>Does the GUI automatically record this?</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="how-to-compute-an-accuracy-rate-for-a-block-and-use-it-for-thresholding" class="title-slide slide level1 center">
+<h1>How to compute an accuracy rate for a block and use it for thresholding</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Start with an empty list</li>
+<li>Per-trial add to the list 0 or 1 based on key_resp.corr or some explicit calculation of accuracy</li>
+<li>At end of block calculate the mean of the list for an accuracy rate</li>
+<li>say, <code>if rate better than 80% then end the practice block and continue to the experimental block</code></li>
+</ul>
+<div id="f7f8ca66" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="cf">if</span> rate<span class="op">&gt;</span><span class="fl">.8</span>:</span>
+<span id="cb16-2"><a href=""></a>  trials.finished <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div title="response needed">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>response needed</strong></p>
+</div>
+<div class="callout-content">
+<p>More needed</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section id="complete-experiments" class="title-slide slide level1 center">
 <h1>Complete experiments</h1>
 
@@ -850,21 +1061,84 @@ Matt
 
 </section>
 
+<section id="online" class="title-slide slide level1 center">
+<h1>Online</h1>
+
+</section>
+
+<section>
 <section id="python---javascript-generation" class="title-slide slide level1 center">
 <h1>Python -&gt; Javascript generation</h1>
-<aside class="notes">
-<p>Speaker notes go here.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+
+</section>
+<section id="sync-with-pavlovia" class="slide level2">
+<h2>Sync with pavlovia</h2>
+</section>
+<section id="sync-with-pavlovia-1" class="slide level2">
+<h2>Sync with pavlovia</h2>
+<p>clone, push, and pull.</p>
+</section>
+<section id="surveys" class="slide level2">
+<h2>Surveys</h2>
+</section>
+<section id="replace-qualtrics-with-surveys" class="slide level2">
+<h2>Replace Qualtrics with Surveys</h2>
+<ul>
+<li>import qsf</li>
+<li>implement logic and conditional display of a question</li>
+</ul>
+</section>
+<section id="replace-qualtrics-with-surveys---daisy-chaining" class="slide level2">
+<h2>Replace Qualtrics with Surveys - Daisy chaining</h2>
+</section>
+<section id="sona-advert-link" class="slide level2">
+<h2>Sona advert link</h2>
+<p>for the experimenter to administrate the SONA advert and slots</p>
+<p><a href="https://psychologyresearchbu.sona-systems.com/exp_info.aspx?experiment_id=3698">https://psychologyresearchbu.sona-systems.com/exp_info.aspx?experiment_id=3698</a></p>
+</section>
+<section id="sona---survey-link" class="slide level2">
+<h2>SONA -&gt; Survey link</h2>
+<p><a href="https://run.pavlovia.org/pavlovia/survey-2024.1.0/?surveyId=97257dd7-a640-464a-8a54-1b237f5e46d4&amp;participant=%SURVEY_CODE%">https://run.pavlovia.org/pavlovia/survey-2024.1.0/?surveyId=97257dd7-a640-464a-8a54-1b237f5e46d4&amp;participant=%SURVEY_CODE%</a></p>
+<ul>
+<li><p><a href="surveyId">surveyId</a> comes from pavlovia and identifies the survey you are going to</p></li>
+<li><p><a href="%SURVEY_CODE%">%SURVEY_CODE%</a> (confusingly) comes from SONA (not pavlovia) and identifies the SONA participant with a unique number like 12345. This number gets passed around all systems in the daisy chain, so that you can later join together all the responses that this participant made across all systems in the chain.</p></li>
+</ul>
+</section>
+<section id="survey---sona-link" class="slide level2">
+<h2>Survey -&gt; SONA link</h2>
+<ul>
+<li>base URL:
+<ul>
+<li><a href="https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx">https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx</a></li>
+</ul></li>
+<li>experiment_id:
+<ul>
+<li><a href="?experiment_id=3698">?experiment_id=3698</a></li>
+</ul></li>
+<li>credit token:
+<ul>
+<li><a href="&amp;credit_token=6a7fa06f44884643b23b8b9a273e27ba">&amp;credit_token=6a7fa06f44884643b23b8b9a273e27ba</a></li>
+</ul></li>
+<li>participant_id:
+<ul>
+<li><a href="&amp;survey_code=%7Bparticipant%7D">&amp;survey_code={participant}</a></li>
+</ul></li>
+</ul>
+<!-- [https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}](https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}) -->
+</section>
+<section id="survey---sona-link-1" class="slide level2">
+<h2>Survey -&gt; SONA link</h2>
+<ul>
+<li>You get this from SONA - it is the return URL</li>
+<li>It encodes the “experiment” identifier - actually an id for the advert</li>
+<li>It encodes a credit token so that an individual participant can be marked as ‘participated’ to avoid a single individual racking up multiple credits</li>
+<li>It encodes the participant number itself – the one that was sent out as %SURVEY_CODE%</li>
+</ul>
+</section></section>
+<section id="shelf" class="title-slide slide level1 center">
+<h1>Shelf</h1>
+<p>This is a new feature that permits <strong>counterbalancing in online experiments</strong></p>
+<p>There is no equivalent to “write to csv” in online experiments, so now there is an online place where you can store variable: value pairs like how many participants have participated in each level of counterbalancing so far</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
