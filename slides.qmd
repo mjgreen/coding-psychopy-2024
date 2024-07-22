@@ -36,6 +36,29 @@ refer to the official psychopy demo (timestamp 4:42)
 [Getting started with Code Components in PsychoPy (by making a visual search task!](https://youtu.be/0dJgLf7BxbE)
 :::
 
+# Many stimuli (pure code no Builder)
+
+---
+
+This runs in python without opening PsychoPy ...
+
+![](demos/vis-search-no-builder/main.png)
+
+---
+
+... but you can also open it in PsychoPy and run it from  there
+
+![](demos/vis-search-no-builder/main-in-coder.png)
+
+## Adding a screenshot of stimuli
+
+![](demos/vis-search-no-builder/stimulus.png)
+
+---
+
+![](demos/vis-search-no-builder/Screenshot from 2024-07-22 11-24-35.png)
+
+
 
 # Fields
 
@@ -224,28 +247,6 @@ print to verify that the shuffled list is not the same as the original list
 print(current_cats)
 ```
 
-
-# Many stimuli (pure code no Builder)
-
----
-
-This runs in python without opening PsychoPy ...
-
-![](demos/vis-search-no-builder/main.png)
-
----
-
-... but you can also open it in PsychoPy and run it from  there
-
-![](demos/vis-search-no-builder/main-in-coder.png)
-
-## Adding a screenshot of stimuli
-
-![](demos/vis-search-no-builder/stimulus.png)
-
----
-
-![](demos/vis-search-no-builder/Screenshot from 2024-07-22 11-24-35.png)
 
 
 # Logic / Flow Control
