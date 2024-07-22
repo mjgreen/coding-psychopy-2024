@@ -511,7 +511,7 @@ Matt
 <section id="declaring-variables-for-fields-in-code" class="slide level2">
 <h2>Declaring variables for fields in code</h2>
 <p>Handle the cats in code</p>
-<div id="b65424ae" class="cell" data-execution_count="1">
+<div id="1df0bc6b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Make a list called `cats` containing the filenames.</span></span>
 <span id="cb1-2"><a href=""></a>cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb1-3"><a href=""></a></span>
@@ -549,7 +549,7 @@ Matt
 <section id="advanced-note" class="slide level2">
 <h2>Advanced note</h2>
 <p>We can also bypass the Image component altogether.</p>
-<div id="23ae0ab3" class="cell" data-execution_count="2">
+<div id="b589e0cf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> psychopy <span class="im">import</span> visual</span>
 <span id="cb2-2"><a href=""></a>my_image <span class="op">=</span> visual.ImageStim(win<span class="op">=</span>myWin)</span>
 <span id="cb2-3"><a href=""></a>my_image.Image <span class="op">=</span> cats[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -601,7 +601,7 @@ Matt
 <section id="pure-randomising-2" class="slide level2">
 <h2>Pure randomising</h2>
 <p>If we are using code we can use <code>shuffle</code> on the list to get randomisation (not yet pseudo-randomisation but see later for that)</p>
-<div id="7d143e40" class="cell" data-execution_count="3">
+<div id="d145c9cb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># We have to import the shuffle routine from the random library</span></span>
 <span id="cb3-2"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb3-3"><a href=""></a></span>
@@ -628,13 +628,13 @@ Matt
 <ul>
 <li>Make a list of cat images as before</li>
 </ul>
-<div id="77c84d66" class="cell" data-execution_count="4">
+<div id="390143b6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Make a faithful copy of the original list. At this point <code>current_cats</code> is the same as the <code>original_cats</code> list.</li>
 </ul>
-<div id="cd01c2be" class="cell" data-execution_count="5">
+<div id="3ea16798" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -646,24 +646,24 @@ Matt
 <li><strong>while the <code>current_cats</code> list is still the same as the original, shuffle the <code>current_cats</code> list</strong></li>
 </ul></li>
 </ul>
-<div id="26366ae1" class="cell" data-execution_count="6">
+<div id="86871843" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="cf">while</span> current_cats <span class="op">==</span> original_cats:</span>
 <span id="cb7-2"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Then verify that the resulting list is different from the original list</li>
 </ul>
-<div id="39e294a3" class="cell" data-execution_count="7">
+<div id="cbc8acf9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
+<pre><code>['cat3.jpg', 'cat1.jpg', 'cat2.jpg']</code></pre>
 </div>
 </div>
 </section>
 <section id="putting-it-all-together" class="slide level2">
 <h2>Putting it all together</h2>
 <p>code block for shuffling</p>
-<div id="b4eab3b8" class="cell" data-execution_count="8">
+<div id="b757a70f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">from</span> random <span class="im">import</span> shuffle</span>
 <span id="cb10-2"><a href=""></a>original_cats <span class="op">=</span> [<span class="st">'cat1.jpg'</span>, <span class="st">'cat2.jpg'</span>, <span class="st">'cat3.jpg'</span>]</span>
 <span id="cb10-3"><a href=""></a>current_cats <span class="op">=</span> original_cats.copy()</span>
@@ -671,7 +671,7 @@ Matt
 <span id="cb10-5"><a href=""></a>  shuffle(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>print to verify that the shuffled list is not the same as the original list</p>
-<div id="c936d974" class="cell" data-execution_count="9">
+<div id="9669da87" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(current_cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['cat2.jpg', 'cat3.jpg', 'cat1.jpg']</code></pre>
@@ -692,7 +692,15 @@ Matt
 
 <p>… but you can also open it in PsychoPy and run it from there</p>
 
-<img data-src="demos/vis-search-no-builder/main-in-coder.png" class="r-stretch"></section></section>
+<img data-src="demos/vis-search-no-builder/main-in-coder.png" class="r-stretch"></section>
+<section id="adding-a-screenshot-of-stimuli" class="slide level2">
+<h2>Adding a screenshot of stimuli</h2>
+
+<img data-src="demos/vis-search-no-builder/stimulus.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="demos/vis-search-no-builder/Screenshot%20from%202024-07-22%2011-24-35.png" class="r-stretch"></section></section>
 <section>
 <section id="logic-flow-control" class="title-slide slide level1 center">
 <h1>Logic / Flow Control</h1>
@@ -820,7 +828,7 @@ Matt
 <h2>EEG - conditional trigger</h2>
 <p>Since we can send a message as soon as some condition is satisfied, we can send a message as soon as the stimulus is visible on screen (for example).</p>
 <p>Assume the Image component for the stimulus is named ‘stimulus_1’. The ‘Condition’ would then be as follows (n.b.&nbsp;that we have to put a dollar sign in front of the actual python code so that the Builder knows we are supplying something to be evaluated rather than a literal piece of text)</p>
-<div id="85069627" class="cell" data-execution_count="10">
+<div id="4d6e53bf" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>$stimulus_1.status <span class="op">==</span> STARTED</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -936,7 +944,7 @@ Matt
 <section id="add-data-from-code-to-the-csv-file-2" class="slide level2">
 <h2>Add data from code to the csv file</h2>
 <p>The instruction is simple enough though:</p>
-<div id="71e4778b" class="cell" data-execution_count="11">
+<div id="581d2fb7" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>thisExpAddData(<span class="st">"accuracy threshold for block 1"</span>, acc_thresh_block_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first argument is going to end up as the column header in the csv file.</p>
@@ -960,7 +968,7 @@ Matt
 <section id="add-data-from-code-to-the-csv-file-5" class="slide level2">
 <h2>Add data from code to the csv file</h2>
 <p>You can exert finer control if you rename the variables using Code.</p>
-<div id="83798c17" class="cell" data-execution_count="12">
+<div id="4ffe41b0" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 keys pressed"</span>, key_resp.keys)</span>
 <span id="cb15-2"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 accuracy"</span>, key_resp.corr)</span>
 <span id="cb15-3"><a href=""></a>thisExpAddData(<span class="st">"block 1 trial 1 response time"</span>, key_resp.keys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1031,7 +1039,7 @@ Matt
 <li>At end of block calculate the mean of the list for an accuracy rate</li>
 <li>say, <code>if rate better than 80% then end the practice block and continue to the experimental block</code></li>
 </ul>
-<div id="f7f8ca66" class="cell" data-execution_count="13">
+<div id="5b52ba7a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="cf">if</span> rate<span class="op">&gt;</span><span class="fl">.8</span>:</span>
 <span id="cb16-2"><a href=""></a>  trials.finished <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1198,7 +1206,7 @@ Matt
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: 'h.v',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -1239,7 +1247,7 @@ Matt
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
+        navigationMode: 'default',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,

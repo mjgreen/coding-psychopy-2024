@@ -3,6 +3,7 @@ title: "Code components"
 author: "Matt"
 format:
   revealjs:
+    navigation-mode: vertical
     slide-number: true
     show-slide-number: all
     scrollable: false
@@ -237,6 +238,14 @@ This runs in python without opening PsychoPy ...
 ... but you can also open it in PsychoPy and run it from  there
 
 ![](demos/vis-search-no-builder/main-in-coder.png)
+
+## Adding a screenshot of stimuli
+
+![](demos/vis-search-no-builder/stimulus.png)
+
+---
+
+![](demos/vis-search-no-builder/Screenshot from 2024-07-22 11-24-35.png)
 
 
 # Logic / Flow Control
