@@ -1,0 +1,43 @@
+# How to compute an accuracy rate for a block and use it for thresholding
+
+---
+  
+  * Start with an empty list
+* Per-trial add to the list 0 or 1 based on key_resp.corr or some explicit calculation of accuracy
+* At end of block calculate the mean of the list for an accuracy rate
+* say, `if rate better than 80% then end the practice block and continue to the experimental block`
+```{python}
+#| eval: false
+if rate>.8:
+  trials.finished = True
+```
+
+:::{.callout-important title="response needed"}
+More needed
+:::
+  
+  
+  
+  # Logic / Flow Control
+  
+  ---
+  
+  * Logic boils down to saying 'if ... then'
+
+---
+  
+  :::{.callout-important}
+people asked for changing the flow based on a participant's earlier responses
+:::
+
+---
+
+:::{.callout-important}
+demonstrate `response.keys`
+:::
+
+---
+
+:::{.callout-important}
+demonstrate free-text responses -- the enter your age example
+:::

@@ -1,0 +1,58 @@
+# Online
+
+# Python -> Javascript generation
+
+## Sync with pavlovia
+
+## Sync with pavlovia
+
+clone, push, and pull.
+
+## Surveys
+
+## Replace Qualtrics with Surveys
+
+* import qsf
+* implement logic and conditional display of  a question
+
+## Replace Qualtrics with Surveys - Daisy chaining
+
+## Sona advert link
+
+for the experimenter to administrate the SONA advert and slots
+
+[https://psychologyresearchbu.sona-systems.com/exp_info.aspx?experiment_id=3698](https://psychologyresearchbu.sona-systems.com/exp_info.aspx?experiment_id=3698)
+
+## SONA -> Survey link 
+
+[https://run.pavlovia.org/pavlovia/survey-2024.1.0/?surveyId=97257dd7-a640-464a-8a54-1b237f5e46d4&participant=%SURVEY_CODE%](https://run.pavlovia.org/pavlovia/survey-2024.1.0/?surveyId=97257dd7-a640-464a-8a54-1b237f5e46d4&participant=%SURVEY_CODE%)
+
+* [surveyId](surveyId) comes from pavlovia and identifies the survey you are going to
+
+* [%SURVEY_CODE%](%SURVEY_CODE%) (confusingly) comes from SONA (not pavlovia) and identifies the SONA participant with a unique number like 12345. This number gets passed around all systems in the daisy chain, so that you can later join together all the responses that this participant made across all systems in the chain.
+
+## Survey -> SONA link 
+
+* base URL: 
+  * [https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx](https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx)
+* experiment_id: 
+  * [?experiment_id=3698](?experiment_id=3698)
+* credit token: 
+  * [&credit_token=6a7fa06f44884643b23b8b9a273e27ba](&credit_token=6a7fa06f44884643b23b8b9a273e27ba)
+* participant_id: 
+  * [&survey_code={participant}](&survey_code={participant})
+
+<!-- [https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}](https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}) -->
+  
+  ## Survey -> SONA link 
+  * You get this from SONA - it is the return URL
+* It encodes the "experiment" identifier - actually an id for the advert
+* It encodes a credit token so that an individual participant can be marked as 'participated' to avoid a single individual racking up multiple credits
+* It encodes the participant number itself -- the one that was sent out as %SURVEY_CODE%
+  
+  
+  # Shelf
+  
+  This is a new feature that permits **counterbalancing in online experiments**
+  
+  There is no equivalent to "write to csv" in online experiments, so now there is an online place where you can store variable: value pairs like how many participants have participated in each level of counterbalancing so far

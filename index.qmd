@@ -1,77 +1,612 @@
 ---
-title: "How to write Code components in PsychoPy"
-author: "Matt Green"
-format: html
-editor: source
-date: now
-date-format: DD MMMM, YYYY, HH:mm:ss
-toc: true
-license: "CC BY-NC-SA"
+title: "Code components"
+author: "Matt"
+format:
+  revealjs:
+    #navigation-mode: vertical
+    slide-number: true
+    show-slide-number: all
+    scrollable: false
+    preview-link: auto
+    fig-width: 7
+    fig-height: 4
+    toc: true
+    toc-depth: 1
+    number-sections: false
+    chalkboard: true
+    page-layout: full
+    # height: 1080
+    # width: 1920
+    callout-appearance: simple
 ---
 
-## About
+# Many stimuli (visual search)
 
-This material lives at a [repository on github](https://github.com/mjgreen/coding-psychopy-2024){target="_blank"}.
+---
 
-This long-form content is at [this link](https://mjgreen.github.io/coding-psychopy-2024/){target="_blank"}.
+* In the classic visual search task you need to put, say, 100 individual letters on the screen in different positions.
+* This would require you to make 100 Text stims and supply each one's x and y and letter content
 
-There are slides at [this link](https://mjgreen.github.io/coding-psychopy-2024/slides.html){target="_blank"}.
+---
 
-## Check out
+* However since you can generate Text stims in code, this becomes a much easier task -- just create them in a loop
+* You can do this in the Builder using a Code component
 
-[Getting started with Code Components in PsychoPy (by making a visual search task!](https://youtu.be/0dJgLf7BxbE)
-
-## I am using PsychoPy 2024.1.5 but the AppsAnywhere version is `PsychoPy3 2024.1.4`
-
-## Intro
-
-***The Builder, python, and javascript***
-
-PsychoPy has a Builder interface that allows you to specify an experiment using a visual icon-based interface. It is still possible to write raw python code that calls the psychopy libraries - this is how psychopy started life, as a set of routines that simplified doing repetitive tasks in python like creating shapes and drawing them to the screen.
-
-The Builder takes your visual representation of the experiment and translates it into those low-level python routines.
-
-In response to Covid and the associated requirement to deploy experiments that can be carried out online via web browsers, the Builder can now generate javascript equivalents of those low-level python routines. Using javascript for this is not a choice - we are constrained to use javascript because that is the language of the web browser. 
-
-So the Builder is the starting point and python and javascript are the two output options.
-
-For anything beyond basic stimulus response, we have to go beyond the basic Builder icons for things like "image" and write raw python which we inject using the "Code" icon.
-
-For psychologists who know a little python, this can result in a fairly complex experiment that runs in a lab. To meet the need to run complex experiments online, without requiring users to learn javascript, there is an ongoing "auto-translation" effort that works one-way `python -> javascript`. 
-
-This is ok, but it can be difficult to establish that the resulting javascript does what you want; and the auto-translation feature is incomplete, so inevitably you have to learn a little javascript if you want to deploy complex experiments online.
-
-## Randomisation
-
-Simple randomisation is handled by shuffling the spreadsheet that controls a loop. This works for presenting pre-defined trial contents in a different order for each participant.
-
-An example of a situation where randomising in code would be useful is ...
-
-::: {.callout-note}
-## Randomisation Example
-Insert Tara's face-grid experiment
+::: {.notes}
+Show this in Builder
 :::
 
-## Flow control 
+:::{.callout-tip}
+refer to the official psychopy demo (timestamp 4:42)
 
-Any time you want to say **if... then... else**, the name of the programming feature you want is **flow control**.
-
-## Previous responses
-
-Previous responses can be accessed in PsychoPy -- you just need to know the conventions used for naming the various parts of the experiment. For example if you have a keyboard component called *response* and the participant responded by pressing the key "a", then you can access the "a" by using the name `response.resp`. In programming the term **key-value pair** is used for this relationship -- we refer to `response.resp` as the **key** and we refer to "a" as the **value**.
-
-## Callout blocks {.appendix}
-
-::: {.callout-note}
-Note that there are five types of callouts, including:
-`note`, `warning`, `important`, `tip`, and `caution`.
+[Getting started with Code Components in PsychoPy (by making a visual search task!)](https://youtu.be/0dJgLf7BxbE)
 :::
 
-## Wacom example
+# Many stimuli (pure code no Builder)
 
-## TMS example
+---
 
-## EEG example
+This runs in python without opening PsychoPy ...
 
-## Eye-tracking example
+![](demos/vis-search-no-builder/main.png)
 
+---
+
+... but you can also open it in PsychoPy Coder and run it from  there
+
+![](demos/vis-search-no-builder/main-in-coder.png)
+
+## Adding a screenshot of stimuli
+
+![](demos/vis-search-no-builder/stimulus.png)
+
+---
+
+![](demos/vis-search-no-builder/Screenshot from 2024-07-22 11-24-35.png)
+
+# Fields
+
+Fields can be constants or variables.
+
+## Constants for fields
+
+To present an image you can supply the image's filename directly in the `Image` field ('constant' method).
+
+::: {.callout-tip title="method 1 using a constant"}
+![](demos/variables/Screenshot 2024-07-18 135559.png){width="100%"}
+:::
+
+## Variables for fields
+
+To present the same image you can supply the image's filename in a spreadsheet and use the column header as a variable ('variable' method)
+
+::: {.callout-tip title="method 2 using a reference to the spreadsheet"}
+![](demos/variables/Screenshot 2024-07-18 135839.png){width="100%"}
+![](demos/variables/Screenshot 2024-07-18 133914.png){width="25%"}
+:::
+
+## Why use variables in fields?
+
+* The 'variable' method allows you to present a sequence of images by passing a list of their names through the `Image` component in a loop.
+
+* Variable names are usually column headers in the spreadsheet that controls the loop, as in the previous example.
+
+* Variable names can also be things that you declare explicitly in code 
+
+## Declaring variables for fields in code
+
+Handle the cats in code
+
+```{python}
+# Make a list called `cats` containing the filenames.
+cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+
+# Set the index `i` to 0 (python starts counting from zero not one)
+i = 0
+
+# Make a variable called `this_cat` and point it at the i'th cat
+this_cat = cats[i]
+
+# increment the index so that the next trial gets the next cat in the list
+i = i + 1
+```
+
+Now we can use `this_cat` to reference the current trial's image of a cat.
+
+## Which tab to put the code in
+
+Use "Begin Experiment" tab to set up the list and set the index to zero
+
+![](demos/variables/Screenshot 2024-07-18 150858.png)
+
+## Which tab to put the code in
+
+Use "Begin Routine" tab to pull out the current cat as `this_cat`
+
+![](demos/variables/Screenshot 2024-07-18 152534.png)
+
+## Which tab to put the code in
+
+Use "End Routine" to increment the index ready to pull out the next cat.
+
+![](demos/variables/Screenshot 2024-07-18 152546.png)
+
+## Use `this_cat` as the Image
+
+![](demos/variables/Screenshot 2024-07-18 153728.png)
+
+Note that we have to change from "constant" to "set every repeat"
+
+## Advanced note
+
+We can also bypass the Image component altogether.
+
+```{python}
+#| eval: false
+
+from psychopy import visual
+my_image = visual.ImageStim(win=myWin)
+my_image.Image = cats[i]
+```
+
+## Why declare fields in code?
+
+* It doesn't always repay the effort to declare variables in code.
+* In the last example the best way to present the cats in a sequence is the spreadsheet method.
+
+# Randomising and pseudo-randomising sequences
+
+n.b. a truly randomised sequence can be in the same order as the original sequence. Most often we want pseudo-randomised sequences that impose some constraints on true randomisation.
+
+---
+
+Let's say we want to randomise the order in which cats are presented across participants to avoid systematic order effects.
+
+## Pure randomising
+
+If we are using the spreadsheet method, randomisation is a property of the loop: 
+
+* we can tell the loop to randomise the sequence of cats, 
+* but we can't tell the loop to __pseudo__-randomise the sequence of cats.
+
+## Pure randomising
+
+![](demos/variables/Screenshot 2024-07-18 160058.png)
+
+## Pure randomising
+
+If we are using code we can use `shuffle` on the list to get randomisation (not yet pseudo-randomisation but see later for that)
+
+```{python}
+# We have to import the shuffle routine from the random library
+from random import shuffle
+
+# Make a list called `cats` containing the filenames.
+cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+
+# Shuffle the list
+shuffle(cats)
+
+# View the list
+print(cats)
+```
+
+## Pseudo-randomising 
+
+One advantage of shuffling in code is that we can impose pseudo-randomisation which is almost impossible using the spreadsheet method.
+
+For example, let's say we never want the original order to be the outcome of shuffling the list.
+
+## Pseudo-randomising {.scrollable}
+
+* Make a list of cat images as before 
+
+```{python}
+original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+```
+
+* Make a faithful copy of the original list. At this point `current_cats` is the same as the `original_cats` list.
+ 
+```{python}
+current_cats = original_cats.copy()
+```
+
+## Pseudo-randomising {.scrollable}
+
+* Next we say: 
+  * __while the `current_cats` list is still the same as the original, shuffle the `current_cats` list__
+
+```{python}
+while current_cats == original_cats:
+  shuffle(current_cats)
+```
+
+* Then verify that the resulting list is different from the original list
+
+```{python}
+print(current_cats)
+```
+
+## Putting it all together
+
+code block for shuffling
+
+```{python}
+from random import shuffle
+original_cats = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg']
+current_cats = original_cats.copy()
+while current_cats == original_cats:
+  shuffle(current_cats)
+```
+
+print to verify that the shuffled list is not the same as the original list
+
+```{python}
+print(current_cats)
+```
+
+# Logic / Control Flow
+
+---
+
+In this example we compute an accuracy rate for a practice block.
+
+If they exceed some threshold of accuracy (80% accurate is common), let them proceed to the experimental block, otherwise they repeat the practice block until they do reach 80% accuracy on the practice block.
+
+---
+
+* import libraries
+```{python}
+from random import randint
+from statistics import mean
+```
+
+---
+
+* Start with an empty list
+
+```{python}
+#| eval: false
+accuracy_list = []
+```
+
+* Every trial add to the list 0 or 1 based on `key_resp.corr` or some explicit calculation of accuracy
+
+```{python}
+#| eval: false
+accuracy_list.append(key_resp.corr)
+```
+
+---
+
+* At end of block calculate the mean of the list for an accuracy rate
+
+```{python}
+#| eval: false
+accuracy_rate = mean(accuracy_list)
+```
+
+---
+
+Here we assume that the number of repeats of the practice loop is set to some very large number.
+
+* say, **if rate is greater than 80% then end the practice block**
+```{python}
+#| eval: false
+if rate>.8:
+  trials.finished = True
+```
+
+Because the number of repeats of the loop is very large, any failure to reach `trials.finished = True` leads to a repeat of the practice loop
+
+## Putting it all together
+
+```{python}
+#| eval: true
+from random import randint
+from statistics import mean
+accuracy_list=[]
+for i in range(10):
+    this_acc = randint(0,1)
+    accuracy_list.append(this_acc)
+accuracy_rate = mean(accuracy_list)
+if accuracy_rate>.8:
+  trials.finished = True
+```
+
+```{python}
+print(accuracy_list)
+```
+
+```{python}
+print(accuracy_rate)
+```
+
+# Hardware - EEG, TMS, Wacom, Eye-tracking
+
+## EEG
+
+* EEG is handled by the parallel port component 
+* In EEG all we are doing is sending messages into the data: recording of data from the electrodes is handled by an entirely separate system (separate recorder PC)
+* The amplifiers send data from the electrodes over fibre-optic cables to a box that translates optical to usb and feeds the recorder PC usb signals representing activity at each electrode.
+
+## EEG
+
+* We send messages from the display PC to the recorder PC by feeding an additional channel into the box that translates optical to USB.
+* So an EEG signal from the display PC acts like a dummy electrode channel
+
+---
+
+:::{.column-screen}
+![](demos/eeg/Recorder_Segmentation_1000px.png){width="7100%"}
+:::
+
+
+## EEG - the parallel port
+
+* the parallel port is a really old channel of communication
+* but it is still the best option for sending triggers
+* you can set it to send integers from 0 to 256
+* 0 is 'off', everything else is a variant of 'on'
+
+## EEG - parallel port messages
+
+* a common mistake is to think that changing from '1' to '2' is a legitimate message whose content is '2' because sending '2' is a change of state from '1'.
+* changing from '1' to '2' will be interpreted as _change to 'on' from 'on'_ which is no change at all -- the port will still be sending '1' but because there is no change, the amplifier won't even hear the '1', you will get no trigger message recorded at all (hard to debug)
+* if the last message was '1' and you now want to send '2', you have to go via '0'
+
+## EEG - parallel port messages
+
+parallel ports need drivers -- use the ones at:
+[https://www.highrez.co.uk/Downloads/InpOut32/](https://www.highrez.co.uk/Downloads/InpOut32/)
+
+## EEG - parallel port messages
+
+* you have always been able to send parallel port messages in code.
+```{python}
+#| eval: false
+parallel.setData(2)
+```
+
+* but now you can send messages in a parallel port Component
+
+:::{.column-screen}
+![](demos/eeg/2024-07-23_07-21.png){width="25%"}
+:::
+
+---
+
+:::{.column-screen}
+![](demos/eeg/Screenshot from 2024-07-21 19-13-57.png){width="75%"}
+:::
+
+By default, `"Stop data"` is set to 0 to ensure that any subsequent 'on' messages between 1 and 256 will be interpreted as a change of state from 'off' to 'on'
+
+---
+
+:::{.column-screen}
+![](demos/eeg/Screenshot from 2024-07-21 19-20-17.png){width="75%"}
+:::
+
+You can send a signal at some time in seconds.milliseconds; after some number of frames; or **based upon some condition being satisfied**.
+
+## EEG - conditional trigger
+
+Since we can send a message as soon as some condition is satisfied, we can send a message as soon as the stimulus is visible on screen (for example).
+
+Assume the Image component for the stimulus is named 'stimulus_1'. The 'Condition' would then be as follows (n.b. that we have to put a dollar sign in front of the actual python code so that the Builder knows we are supplying something to be evaluated rather than a literal piece of text)
+
+```{python}
+#| eval: false
+$stimulus_1.status == STARTED
+```
+
+## EEG - conditional trigger
+
+:::{.column-screen}
+![](demos/eeg/Screenshot from 2024-07-21 19-36-30.png){width="100%"}
+:::
+
+## EEG - conditional trigger
+
+Note that I shortened the duration from the default 1 second to 0.1 seconds. This is because you want to send the 0 (`"Stop data"` value) soon after the 'on' signal' so that the port is clean quickly in case you want to send another message quickly (maybe send a '2' as soon as the stimulus is no longer visible). If that '2' signal came while the port was still saying '1' then the '2' just would not be recognised as a change of state leading to no '2' message being sent (because '1' to '2' is 'on' to 'still on')
+
+## EEG - conditional trigger
+
+* In EEG the value of the trigger usually encodes some information.
+* Maybe we have 12 conditions and we want to send a number between 1 and 12 to identify the condition, with the time of the message indicating that some event just happened.
+* Without Code we would have to make 12 Trigger components, one for each number, each with very specific logic in the conditional start, for example, 
+```{python}
+#| eval: false
+condition == 9 and stimulus.status == STARTED
+```
+
+---
+
+Using code we can have just a single Trigger component and feed it a value as a variable that we compute in Code.
+
+```{python}
+#| eval: false
+trigger_value = None
+if condition == "Inverted_face":
+  if gender == "male":
+    if recognition_status == "recognised"
+      trigger_value = 1
+    if recognition_status == "not recognised"
+      trigger_value = 2
+  if gender == "female":
+    if recognition_status == "recognised"
+      trigger_value = 3
+    if recognition_status == "not recognised"
+      trigger_value = 4
+if condition == "Inverted_face":
+  if gender == "male":
+    if recognition_status == "recognised"
+      trigger_value = 5
+    if recognition_status == "not recognised"
+      trigger_value = 6
+  if gender == "female":
+    if recognition_status == "recognised"
+      trigger_value = 7
+    if recognition_status == "not recognised"
+      trigger_value = 8
+```
+
+---
+
+:::{.column-screen}
+![](demos/eeg/Screenshot from 2024-07-23 07-37-46.png){width="100%"}
+:::
+
+## TMS
+
+---
+
+* TMS pulses are handled by the parallel port component.
+* So why use code to send triggers to the TMS machine?
+* Components are good when you only need to do something once per frame, or conditional on some simple state being true.
+* Not so good when the state that has to be true is complex to define (more complex than _stimulus is visible_)
+* Not so good when triggers need to be sent at higher-than-frame-rate Hz.
+
+---
+
+* TMS pulses need to be sent in quick succession
+* Components can do things fairly frequently -- but not more frequently than the frame rate.
+* At 60 Hz this is once every 16.6 ms.
+* Individual TMS pulses sometimes need to happen more quickly -- at 100 Hz is common, so every 10 ms 
+* Faster-than-frame-rate actions can be done in loops in code components
+
+## TMS - Alex
+
+:::{.callout-tip}
+refer to Alex's TMS experiment
+:::
+
+## Wacom
+
+* The Wacom tablet allows participants to trace paths through mazes so it can be used for way-finding and related tasks.
+* There is no Wacom component but there is an `iohub` _device_ for Wacom in python
+
+## Wacom - Marina
+
+:::{.callout-tip}
+refer to Marina's Wacom experiment
+:::
+
+## Eye-tracking
+
+* There is now an eye-tracking component but I haven't used it yet.
+* There is an `iohub` _device_ for each eye-tracker in common use
+* You can use mouse simulation of eye-movements while developing the experiment
+    * this is because there is an iohub device for mouse and you can switch easily between different iohub devices (could run the same task with the Wacom pen device)
+
+## Eye-tracking - Jan's experiment
+
+:::{.callout-tip}
+refer to the foraging game
+:::
+
+# Add data from code to the csv file
+
+## Add data from code to the csv file
+
+* Everything supplied in a loop spreadsheet to a loop gets recorded in the output file.
+* Everything computed by (non-Code) Components gets recorded to the output file
+  * This covers response keys for keyboard components and the RTs for those responses for example
+
+**BUT nothing that you create in Code gets recorded to the output file** unless you issue an instruction to record it.
+
+## Add data from code to the csv file
+
+The instruction is simple enough though:
+
+```{python}
+#| eval: false
+thisExpAddData("accuracy threshold for block 1", acc_thresh_block_1)
+```
+
+The first argument is going to end up as the column header in the csv file.
+
+The second argument is the value you want recorded in the relevant row in that column
+
+
+## Add data from code to the csv file
+
+PsychoPy output files are not very human-friendly.
+
+For headers like `key_resp.resp` it can be hard to remember which of several keyboard response this column refers to when you are trying to identify the main response in the experiment at data analysis time
+
+## Add data from code to the csv file
+
+It is good practice to rename Components to get better output. If the keyboard component is the response to "Have you seen this face before?", a name like `face_familiarity.resp` might be better than `key_resp.resp`. 
+
+Rename the Keyboard Component to `face_familiarity` to get variables:
+
+* `face_familiarity.resp` for which key they pressed, 
+* `face_familiarity.rt` for the RT, and 
+* `face_familiarity.corr` for the accuracy.
+
+## Add data from code to the csv file
+
+You can exert finer control if you rename the variables using Code.
+
+```{python}
+#| eval: false
+thisExpAddData("block 1 trial 1 keys pressed", key_resp.keys)
+thisExpAddData("block 1 trial 1 accuracy", key_resp.corr)
+thisExpAddData("block 1 trial 1 response time", key_resp.keys)
+```
+
+# Do not make multiple experiments for different conditions of the same experiment
+
+---
+
+Just feed in different spreadsheets using logic to choose the appropriate sheet for this run
+
+For example people could get different experimental blocks based on their performance in a practice block
+
+```{python}
+#| eval: false
+# Put this in "End Routine"
+if accuracy_rate < .8:
+  experimental_block = "cats.xlsx"
+if accuracy_rate >= .8:
+  experimental_block = "dogs.xlsx"
+```
+
+---
+
+:::{.column-screen}
+![](demos/other/Screenshot from 2024-07-23 07-52-56.png){width="75%"}
+:::
+
+# How to use the dialogue to offer options
+
+---
+
+PsychoPy pops up a dialogue at the start of each experiment asking for a participant number and a session ID.
+
+You can add fields to this.
+
+* drop-downs (show example for 'condition')
+* demographics
+* Anything you add to the dialogue gets recorded to the output
+
+---
+
+You can access what gets typed here as `expInfo`
+
+```{python}
+#| eval: false
+if expInfo['condition'] == '1':
+  experimental_block = "upright_faces.xlsx"
+if expInfo['condition'] == '2':
+  experimental_block = "inverted_faces.xlsx"
+```
+
+'condition' will become a column in the output automatically but note that because we computed `experimental_block` this needs to be added explicitly to the output
+
+```{python}
+#| eval: false
+thisExpAddData("face orientation", experimental_block)
+```
