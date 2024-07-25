@@ -1,3 +1,25 @@
+---
+title: "Online"
+author: "Matt"
+format:
+  revealjs:
+    #navigation-mode: vertical
+    slide-number: true
+    show-slide-number: all
+    scrollable: false
+    preview-link: auto
+    fig-width: 7
+    fig-height: 4
+    toc: true
+    toc-depth: 1
+    number-sections: false
+    chalkboard: true
+    page-layout: full
+    # height: 1080
+    # width: 1920
+    callout-appearance: simple
+---
+
 # Online
 
 # Python -> Javascript generation
@@ -44,15 +66,15 @@ for the experimenter to administrate the SONA advert and slots
 
 <!-- [https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}](https://psychologyresearchbu.sona-systems.com/webstudy_credit.aspx?experiment_id=3698&credit_token=6a7fa06f44884643b23b8b9a273e27ba&survey_code={participant}) -->
   
-  ## Survey -> SONA link 
-  * You get this from SONA - it is the return URL
+## Survey -> SONA link 
+* You get this from SONA - it is the return URL
 * It encodes the "experiment" identifier - actually an id for the advert
 * It encodes a credit token so that an individual participant can be marked as 'participated' to avoid a single individual racking up multiple credits
 * It encodes the participant number itself -- the one that was sent out as %SURVEY_CODE%
   
   
-  # Shelf
+# Shelf
   
-  This is a new feature that permits **counterbalancing in online experiments**
+This is a new feature that permits **counterbalancing in online experiments**
   
   There is no equivalent to "write to csv" in online experiments, so now there is an online place where you can store variable: value pairs like how many participants have participated in each level of counterbalancing so far
